@@ -83,5 +83,47 @@ const HybridCarTest = (req, res) => {
     });
   });
 };
+
+//====================================================//get all Petrol Cars
+const getPetrolCars = (req, res) => {
+  const query = "SELECT * FROM vlc.petrol_car;";
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        massage: "server error",
+        err: err,
+      });
+    }
+
+    // result are the data returned by mysql server
+    return res.status(200).json({
+      success: true,
+      massage: "All Petrol Cars",
+      results: result,
+    });
+  });
+};
+
+//====================================================//get all hybrid Cars
+const gethybridCars = (req, res) => {
+  const query = "SELECT * FROM vlc.hybrid_car;";
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        massage: "server error",
+        err: err,
+      });
+    }
+
+    // result are the data returned by mysql server
+    return res.status(200).json({
+      success: true,
+      massage: "All hybrid Cars",
+      results: result,
+    });
+  });
+};
 //====================================================// module.exports
-module.exports = { petrolCarTest,HybridCarTest };
+module.exports = { petrolCarTest, HybridCarTest, getPetrolCars, gethybridCars };
