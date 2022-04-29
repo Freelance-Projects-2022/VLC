@@ -56,7 +56,7 @@ CREATE TABLE petrol_car(
     vin_bl VARCHAR(255) NOT NULL,
     body_note VARCHAR(255) NOT NULL,
     engine_test varchar(255) NOT NULL,
-    gearch_test varchar(255) NOT NULL,
+    gear_test varchar(255) NOT NULL,
     back_acss VARCHAR(255) NOT NULL
 
 );
@@ -73,7 +73,22 @@ CREATE TABLE order_test(
 
 -- ====================================================//Create hybrid_car Table
 
--- CREATE TABLE hybrid_car(); 
+CREATE TABLE hybrid_car(
+    id int not null auto_increment primary key,
+    engine_test varchar(255) NOT NULL,
+    transmission varchar(255) NOT NULL,
+    srs VARCHAR(255) NOT NULL,
+    abs_system VARCHAR(255) NOT NULL,
+    ac varchar(255) NOT NULL,
+    hybrid_system varchar(255) NOT NULL,
+    hv_battery varchar(255) NOT NULL,
+    eleectric_system varchar(255) NOT NULL,
+    emc varchar(255) NOT NULL,
+    soh varchar(255) NOT NULL,
+    note varchar(255) NOT NULL,
+    is_deleted TINYINT Default 0
+
+);
 
 
 
@@ -105,3 +120,18 @@ VALUES
     users (firstName, lastName, phone, password, role_id)
 VALUES
     ('admin', 'admin', '0770000000', '$10$FSdYblJJZQgmg6rhK3ImdOAKT2RNpisW1BQrrgbAol7ulbWtspxBG', 1);
+
+
+-- ====================================================// Petrol cars Table Data
+INSERT into
+ petrol_car (vin_tr,vin_tl,vin_br,vin_bl,body_note,engine_test,gear_test,back_acss)
+  values("جيد","جيد","جيد","جيد","لا يوجد مشاكل في البودي","ماتور يحتاج صيانة","الجير ممتاز","يحتاج الى صيانة"),
+("جيد","مضروب","جيد","دقة على الراس","لا يوجد مشاكل في البودي","ماتور يحتاج صيانة","الجير غيار","يحتاج الى صيانة"),  
+("جيد","مضروب","جيد","دقة على الراس","لا يوجد مشاكل في البودي","ماتور يحتاج صيانة","الجير غيار","يحتاج الى صيانة"),
+("جيد","مضروب","جيد","دقة على الراس","لا يوجد مشاكل في البودي","ماتور يحتاج صيانة","الجير ممتاز","لا يحتاج صيانة ")
+
+
+-- ====================================================// hybrid cars Table Data
+-- insert into
+ hybrid_car (engine_test,transmission,srs,abs_system,ac,hybrid_system,hv_battery,eleectric_system,emc,soh,note) 
+  values ("CODES","NO DTC","NO DTC","NO DTC","OK","NO DTC","OK","=========","=========","=========","=========")
