@@ -52,8 +52,8 @@ CREATE TABLE petrol_car(
     body_note VARCHAR(255) NOT NULL,
     engine_test varchar(255) NOT NULL,
     gear_test varchar(255) NOT NULL,
-    back_acss VARCHAR(255) NOT NULL
-    is_deleted TINYINT Default 0,
+    back_acss VARCHAR(255) NOT NULL,
+    is_deleted TINYINT Default 0
 
 );
 
@@ -69,10 +69,14 @@ CREATE TABLE order_test(
     order_no VARCHAR(255) NOT NULL,
     notes VARCHAR(255) NOT NULL,
     price decimal NOT NULL,
-    test int not null,
+    petrol_test int not null,
+    hybrid_test int not null,
+
     is_deleted TINYINT Default 0,
 
-    Foreign key (test) references petrol_car(id) ON DELETE CASCADE ON UPDATE CASCADE
+    Foreign key (petrol_test) references petrol_car(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    Foreign key (hybrid_test) references hybrid_car(id) ON DELETE CASCADE ON UPDATE CASCADE
+
 );
 
 
