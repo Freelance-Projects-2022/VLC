@@ -19,6 +19,7 @@ const registerRouter = require("./routes/Register.js");
 //====================================================// Routes Middleware
 
 app.use("/login", loginRouter);
+app.use("/register", registerRouter);
 
 
 //====================================================// Handles any other endpoints [unassigned - endpoints]
