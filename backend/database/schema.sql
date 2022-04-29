@@ -60,6 +60,7 @@ CREATE TABLE petrol_car(
 
 );
 
+
 -- ====================================================//Create petrol_car Table
 CREATE TABLE order_test(
     id int not null auto_increment primary key,
@@ -69,6 +70,7 @@ CREATE TABLE order_test(
     test int not null,
     Foreign key (test) references petrol_car(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
 
 -- ====================================================//Create hybrid_car Table
 
