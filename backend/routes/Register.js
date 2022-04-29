@@ -2,16 +2,16 @@
 const express = require("express");
 
 //====================================================//Import doctors Controllers
-const { userLogin, adminLogin } = require("../controllers/Login");
+const { createNewUser } = require("../controllers/Register");
 
 //====================================================//Create login Router
 
-const loginRouter = express.Router();
+const registerRouter = express.Router();
 
 //====================================================// ENDPOINTS
 
-loginRouter.post("/", adminLogin, userLogin);
+registerRouter.post("/", createNewUser);
 
 
 //====================================================// module.exports
-module.exports = loginRouter;
+module.exports = registerRouter;

@@ -13,6 +13,8 @@ const connection = require("./database/db");
 
 //====================================================// Import Routers
 const loginRouter = require("./routes/login");
+const registerRouter = require("./routes/Register.js");
+
 
 //====================================================// Routes Middleware
 
