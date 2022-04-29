@@ -1,18 +1,27 @@
-Drop Database if exists carTest;
+-- ====================================================//Drop DataBase
+Drop Database if exists VLC;
 
-Create Database carTest;
+-- ====================================================//Create DataBase
+Create Database VLC;
 
-use carTest;
+-- ====================================================//Use DataBase
+use VLC;
+
+-- ====================================================//Create Role Table
 CREATE TABLE Role (
     id int not null auto_increment primary key,
-    title VARCHAR(255) NOT NULL
+    name VARCHAR(255) NOT NULL,
+    is_deleted TINYINT Default 0
+
 );
 
+-- ====================================================//Create Permision Table
 CREATE TABLE permission (
     id int not null auto_increment primary key,
     permission VARCHAR(255) NOT NULL
 );
 
+-- ====================================================//Create role_permissions Table
 CREATE TABLE role_permission (
     id int not null auto_increment primary key,
     role_id int not null,
@@ -20,18 +29,21 @@ CREATE TABLE role_permission (
     FOREIGN KEY (role_id) REFERENCES Role(id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (permission_id) REFERENCES permission(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
-create table user(
+
+-- ====================================================//Create user Table
+CREATE TABLE users (
     id int not null auto_increment primary key,
     firstName varchar(255) not null,
     lastName varchar(255) not null,
-    phone varchar(255) not null,
+    phone varchar(255) not null UNIQUE ,
     password varchar(255) not null,
-    is_deleted TINYINT Default 0,
     role_id int not null,
+    is_deleted TINYINT Default 0,
     Foreign key (role_id) references Role(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-Create Table petrol(
+-- ====================================================//Create petrol_car Table
+CREATE TABLE petrol_car(
     id int not null auto_increment primary key,
     car_no VARCHAR(255) NOT NULL,
     car_type VARCHAR(255) NOT NULL,
@@ -45,17 +57,51 @@ Create Table petrol(
     body_note VARCHAR(255) NOT NULL,
     engine_test varchar(255) NOT NULL,
     gearch_test varchar(255) NOT NULL,
-    back_acss VARCHAR(255) NOT NULL,
+    back_acss VARCHAR(255) NOT NULL
 
 );
-create Table order(
-        id int not null auto_increment primary key,
-        order_no VARCHAR(255) NOT NULL,
-        personal_note VARCHAR(255) NOT NULL,
-        price decimal(10,2) NOT NULL,
-        petrol_test int not null,
-        Foreign key (petrol_test) references petrol(id) ON DELETE CASCADE ON UPDATE CASCADE
+
+-- ====================================================//Create petrol_car Table
+CREATE TABLE order_test(
+    id int not null auto_increment primary key,
+    order_no VARCHAR(255) NOT NULL,
+    notes VARCHAR(255) NOT NULL,
+    price decimal NOT NULL,
+    test int not null,
+    Foreign key (test) references petrol_car(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
-Create Table hybrid(); 
+
+-- ====================================================//Create hybrid_car Table
+
+-- CREATE TABLE hybrid_car(); 
 
 
+
+
+-- =====================================================//Role DATA
+Insert INTO
+    Role (name)
+VALUES
+    ('ADMIN');
+
+Insert INTO
+    Role (name)
+VALUES
+    ('USER');
+
+-- ====================================================// user Table Data
+
+INSERT INTO
+    users (firstName, lastName, phone, password, role_id)
+VALUES
+    ('iyad', 'saadeh', '0780000000', '$10$FSdYblJJZQgmg6rhK3ImdOAKT2RNpisW1BQrrgbAol7ulbWtspxBG', 2);
+
+    INSERT INTO
+    users (firstName, lastName, phone, password, role_id)
+VALUES
+    ('Haitham', 'Alulaimi', '0790000000', '$10$FSdYblJJZQgmg6rhK3ImdOAKT2RNpisW1BQrrgbAol7ulbWtspxBG', 2);
+
+        INSERT INTO
+    users (firstName, lastName, phone, password, role_id)
+VALUES
+    ('admin', 'admin', '0770000000', '$10$FSdYblJJZQgmg6rhK3ImdOAKT2RNpisW1BQrrgbAol7ulbWtspxBG', 1);
