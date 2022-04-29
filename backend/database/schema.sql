@@ -44,11 +44,11 @@ Create Table petrol(
     vin_bl VARCHAR(255) NOT NULL,
     body_note VARCHAR(255) NOT NULL,
     engine_test varchar(255) NOT NULL,
-    gearch_test varchar(255) NOT NULL,
-    back_acss VARCHAR(255) NOT NULL,
+    gear_test varchar(255) NOT NULL,
+    back_acss VARCHAR(255) NOT NULL
 
 );
-create Table order(
+create Table orderTest(
         id int not null auto_increment primary key,
         order_no VARCHAR(255) NOT NULL,
         personal_note VARCHAR(255) NOT NULL,
@@ -56,6 +56,6 @@ create Table order(
         petrol_test int not null,
         Foreign key (petrol_test) references petrol(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
-Create Table hybrid(); 
+-- Create Table hybrid(); 
 
 
