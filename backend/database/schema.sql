@@ -95,14 +95,14 @@ VALUES
 INSERT INTO
     users (fullName, phone, password, role_id)
 VALUES
-    ('iyad saadeh', '0780000000', '$10$FSdYblJJZQgmg6rhK3ImdOAKT2RNpisW1BQrrgbAol7ulbWtspxBG', 2);
+    ('iyad', '0780000000', '$2b$10$KojD1.HRAX/ykKMR.paEruIwR9OiyJ1XMamQvjq2LvLcCBCnI.h.u', 2);
 
     INSERT INTO
     users (fullName, phone, password, role_id)
 VALUES
-    ('Haitham Alulaimi', '0790000000', '$10$FSdYblJJZQgmg6rhK3ImdOAKT2RNpisW1BQrrgbAol7ulbWtspxBG', 2);
+    ('Haitham', '0790000000', '$2b$10$KojD1.HRAX/ykKMR.paEruIwR9OiyJ1XMamQvjq2LvLcCBCnI.h.u', 2);
 
         INSERT INTO
     users (fullName, phone, password, role_id)
 VALUES
-    ('adminadmin', '0770000000', '$10$FSdYblJJZQgmg6rhK3ImdOAKT2RNpisW1BQrrgbAol7ulbWtspxBG', 1);
+    ('admin', '0770000000', '$2b$10$KojD1.HRAX/ykKMR.paEruIwR9OiyJ1XMamQvjq2LvLcCBCnI.h.u', 1);
