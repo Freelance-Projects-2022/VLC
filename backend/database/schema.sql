@@ -12,9 +12,7 @@ CREATE TABLE Role (
     id int not null auto_increment primary key,
     name VARCHAR(255) NOT NULL,
     is_deleted TINYINT Default 0
-
 );
-
 -- ====================================================//Create Permision Table
 CREATE TABLE permission (
     id int not null auto_increment primary key,
@@ -127,3 +125,7 @@ VALUES
     users (fullName, phone, password, role_id)
 VALUES
     ('admin', '0770000000', '$2b$10$KojD1.HRAX/ykKMR.paEruIwR9OiyJ1XMamQvjq2LvLcCBCnI.h.u', 1);
+
+
+-- ====================================================// petrol car Table Data
+
