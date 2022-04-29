@@ -71,9 +71,7 @@ CREATE TABLE order_test(
     price decimal NOT NULL,
     petrol_test int not null,
     hybrid_test int not null,
-
     is_deleted TINYINT Default 0,
-
     Foreign key (petrol_test) references petrol_car(id) ON DELETE CASCADE ON UPDATE CASCADE,
     Foreign key (hybrid_test) references hybrid_car(id) ON DELETE CASCADE ON UPDATE CASCADE
 
@@ -87,7 +85,7 @@ CREATE TABLE hybrid_car(
     engine_test varchar(255) NOT NULL,
     transmission varchar(255) NOT NULL,
     srs VARCHAR(255) NOT NULL,
-    abs VARCHAR(255) NOT NULL,
+    abs_system VARCHAR(255) NOT NULL,
     ac varchar(255) NOT NULL,
     hybrid_system varchar(255) NOT NULL,
     hv_battery varchar(255) NOT NULL,
@@ -97,7 +95,10 @@ CREATE TABLE hybrid_car(
     note varchar(255) NOT NULL,
     is_deleted TINYINT Default 0
 
+
+=======
 ); 
+
 
 
 
@@ -128,8 +129,24 @@ VALUES
         INSERT INTO
     users (fullName, phone, password, role_id)
 VALUES
+    ('admin', 'admin', '0770000000', '$10$FSdYblJJZQgmg6rhK3ImdOAKT2RNpisW1BQrrgbAol7ulbWtspxBG', 1);
+
+
+-- ====================================================// Petrol cars Table Data
+INSERT into
+ petrol_car (vin_tr,vin_tl,vin_br,vin_bl,body_note,engine_test,gear_test,back_acss)
+  values("جيد","جيد","جيد","جيد","لا يوجد مشاكل في البودي","ماتور يحتاج صيانة","الجير ممتاز","يحتاج الى صيانة"),
+("جيد","مضروب","جيد","دقة على الراس","لا يوجد مشاكل في البودي","ماتور يحتاج صيانة","الجير غيار","يحتاج الى صيانة"),  
+("جيد","مضروب","جيد","دقة على الراس","لا يوجد مشاكل في البودي","ماتور يحتاج صيانة","الجير غيار","يحتاج الى صيانة"),
+("جيد","مضروب","جيد","دقة على الراس","لا يوجد مشاكل في البودي","ماتور يحتاج صيانة","الجير ممتاز","لا يحتاج صيانة ")
+
+
+-- ====================================================// hybrid cars Table Data
+-- insert into
+ hybrid_car (engine_test,transmission,srs,abs_system,ac,hybrid_system,hv_battery,eleectric_system,emc,soh,note) 
+  values ("CODES","NO DTC","NO DTC","NO DTC","OK","NO DTC","OK","=========","=========","=========","=========")
+=======
     ('admin', '0770000000', '$2b$10$KojD1.HRAX/ykKMR.paEruIwR9OiyJ1XMamQvjq2LvLcCBCnI.h.u', 1);
 
 
--- ====================================================// petrol car Table Data
 
