@@ -3,18 +3,17 @@ const connection = require("../database/db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-
 //====================================================// admin Login Function
-const adminLogin =  (req, res, next) => {
+const adminLogin = (req, res, next) => {
   const fullName = req.body.fullName;
   const password = req.body.password;
   const query = `SELECT * FROM users WHERE fullName=?`;
   const data = [fullName];
-  console.log("fullName",fullName);
-  console.log("password",password);
+  console.log("fullName", fullName);
+  console.log("password", password);
 
   connection.query(query, data, async (err, result) => {
-    console.log("result",result);
+    console.log("result", result);
     if (!result.length) {
       console.log("from inside  This is account dose not exist");
       return res.status(403).json({
@@ -23,9 +22,9 @@ const adminLogin =  (req, res, next) => {
       });
     } else {
       try {
-        console.log("passwordwwwwwwwwwwwwwwwwwwww",result[0].password);
+        console.log("passwordwwwwwwwwwwwwwwwwwwww", result[0].password);
         const valid = await bcrypt.compare(password, result[0].password);
-        console.log("validvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv",valid);
+        console.log("validvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv", valid);
         if (!valid) {
           return res.status(403).json({
             success: false,
@@ -54,8 +53,6 @@ const adminLogin =  (req, res, next) => {
     }
   });
 };
-
-
 
 //====================================================//user Login Function
 const userLogin = (req, res, next) => {
@@ -96,7 +93,6 @@ const userLogin = (req, res, next) => {
     }
   });
 };
-
 
 //====================================================// module.exports
 
