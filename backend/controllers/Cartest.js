@@ -84,9 +84,9 @@ const HybridCarTest = (req, res) => {
   });
 };
 
-//====================================================//get all Petrol Cars
+//====================================================//get all Petrol Cars where is_deleted =0
 const getPetrolCars = (req, res) => {
-  const query = "SELECT * FROM vlc.petrol_car;";
+  const query = "SELECT *  FROM vlc.petrol_car where is_deleted =0;";
   connection.query(query, (err, result) => {
     if (err) {
       return res.status(500).json({
@@ -105,9 +105,9 @@ const getPetrolCars = (req, res) => {
   });
 };
 
-//====================================================//get all hybrid Cars
+//====================================================//get all hybrid Cars  where is_deleted =0
 const gethybridCars = (req, res) => {
-  const query = "SELECT * FROM vlc.hybrid_car;";
+  const query = "SELECT * FROM vlc.hybrid_car where is_deleted=0;;";
   connection.query(query, (err, result) => {
     if (err) {
       return res.status(500).json({
@@ -125,5 +125,67 @@ const gethybridCars = (req, res) => {
     });
   });
 };
+//====================================================//delete petrol car
+const deletePetrolCar = (req, res) => {
+  const id = req.query.id;
+  const query = "UPDATE petrol_car SET is_deleted=1 WHERE id=?";
+
+  connection.query(query, id, (err, results) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        massage: "Server Error",
+        err: err,
+      });
+    }
+    if (!results.changedRows) {
+      return res.status(404).json({
+        success: false,
+        massage: `The petrol cars : ${id} is not found`,
+        err: err,
+      });
+    }
+    return res.status(200).json({
+      success: true,
+      massage: `Succeeded to delete petrol car with id: ${id}`,
+      results: results,
+    });
+  });
+};
+
+//====================================================//delete hybrid car
+const deletehybridcar = (req, res) => {
+  const id = req.query.id;
+  const query = "UPDATE hybrid_car SET is_deleted=1 WHERE id=?";
+
+  connection.query(query, id, (err, results) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        massage: "Server Error",
+        err: err,
+      });
+    }
+    if (!results.changedRows) {
+      return res.status(404).json({
+        success: false,
+        massage: `The petrol cars : ${id} is not found`,
+        err: err,
+      });
+    }
+    return res.status(200).json({
+      success: true,
+      massage: `Succeeded to delete petrol car with id: ${id}`,
+      results: results,
+    });
+  });
+};
 //====================================================// module.exports
-module.exports = { petrolCarTest, HybridCarTest, getPetrolCars, gethybridCars };
+module.exports = {
+  petrolCarTest,
+  HybridCarTest,
+  getPetrolCars,
+  gethybridCars,
+  deletePetrolCar,
+  deletehybridcar
+};
