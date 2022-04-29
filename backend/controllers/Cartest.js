@@ -26,10 +26,6 @@ const petrolCarTest = (req, res) => {
     back_acss,
   ];
   connection.query(query, data, (err, result) => {
-    console.log(
-      "🚀 ~ file: Cartest.js ~ line 29 ~ connection.query ~ err",
-      err
-    );
     if (err) {
       return res
         .status(500)
@@ -37,7 +33,7 @@ const petrolCarTest = (req, res) => {
     }
     return res.status(200).json({
       success: true,
-      message: "Successful Retrieved All General Test",
+      message: "Successfully Add Car Test",
       result: result,
     });
   });
@@ -45,5 +41,47 @@ const petrolCarTest = (req, res) => {
 
 //====================================================//hybrid car test
 
+const HybridCarTest = (req, res) => {
+  const {
+    engine_test,
+    transmission,
+    srs,
+    abs_system,
+    ac,
+    hybrid_system,
+    hv_battery,
+    eleectric_system,
+    emc,
+    soh,
+    note,
+  } = req.body;
+  const query =
+    "INSERT INTO hybrid_car (  engine_test,transmission,srs,abs_system,ac,hybrid_system,hv_battery,eleectric_system,emc,soh,note) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+  const data = [
+    engine_test,
+    transmission,
+    srs,
+    abs_system,
+    ac,
+    hybrid_system,
+    hv_battery,
+    eleectric_system,
+    emc,
+    soh,
+    note,
+  ];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: "Server Error", error: err.message });
+    }
+    return res.status(200).json({
+      success: true,
+      message: "Successfully Add Car Test",
+      result: result,
+    });
+  });
+};
 //====================================================// module.exports
-module.exports = { petrolCarTest };
+module.exports = { petrolCarTest,HybridCarTest };
