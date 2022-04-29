@@ -18,7 +18,8 @@ CREATE TABLE Role (
 -- ====================================================//Create Permision Table
 CREATE TABLE permission (
     id int not null auto_increment primary key,
-    permission VARCHAR(255) NOT NULL
+    permission VARCHAR(255) NOT NULL,
+    is_deleted TINYINT Default 0
 );
 
 -- ====================================================//Create role_permissions Table
@@ -26,6 +27,8 @@ CREATE TABLE role_permission (
     id int not null auto_increment primary key,
     role_id int not null,
     permission_id int not null,
+    is_deleted TINYINT Default 0,
+
     FOREIGN KEY (role_id) REFERENCES Role(id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (permission_id) REFERENCES permission(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -44,11 +47,6 @@ CREATE TABLE users (
 -- ====================================================//Create petrol_car Table
 CREATE TABLE petrol_car(
     id int not null auto_increment primary key,
-    car_no VARCHAR(255) NOT NULL,
-    car_type VARCHAR(255) NOT NULL,
-    vin VARCHAR(255) NOT NULL,
-    color VARCHAR(255) NOT NULL,
-    model VARCHAR(255) NOT NULL,
     vin_tr VARCHAR(255) NOT NULL,
     vin_tl VARCHAR(255) NOT NULL,
     vin_br VARCHAR(255) NOT NULL,
@@ -57,6 +55,7 @@ CREATE TABLE petrol_car(
     engine_test varchar(255) NOT NULL,
     gear_test varchar(255) NOT NULL,
     back_acss VARCHAR(255) NOT NULL
+    is_deleted TINYINT Default 0,
 
 );
 
@@ -64,17 +63,39 @@ CREATE TABLE petrol_car(
 -- ====================================================//Create petrol_car Table
 CREATE TABLE order_test(
     id int not null auto_increment primary key,
+    car_no VARCHAR(255) NOT NULL,
+    car_type VARCHAR(255) NOT NULL,
+    vin VARCHAR(255) NOT NULL,
+    color VARCHAR(255) NOT NULL,
+    model VARCHAR(255) NOT NULL,
     order_no VARCHAR(255) NOT NULL,
     notes VARCHAR(255) NOT NULL,
     price decimal NOT NULL,
     test int not null,
+    is_deleted TINYINT Default 0,
+
     Foreign key (test) references petrol_car(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
 -- ====================================================//Create hybrid_car Table
 
--- CREATE TABLE hybrid_car(); 
+CREATE TABLE hybrid_car(
+    id int not null auto_increment primary key,
+    engine_test varchar(255) NOT NULL,
+    transmission varchar(255) NOT NULL,
+    srs VARCHAR(255) NOT NULL,
+    abs VARCHAR(255) NOT NULL,
+    ac varchar(255) NOT NULL,
+    hybrid_system varchar(255) NOT NULL,
+    hv_battery varchar(255) NOT NULL,
+    eleectric_system varchar(255) NOT NULL,
+    emc varchar(255) NOT NULL,
+    soh varchar(255) NOT NULL,
+    note varchar(255) NOT NULL,
+    is_deleted TINYINT Default 0
+
+); 
 
 
 
