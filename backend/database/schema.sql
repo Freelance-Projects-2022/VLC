@@ -55,7 +55,7 @@ CREATE TABLE petrol_car(
     vin_bl VARCHAR(255) NOT NULL,
     body_note VARCHAR(255) NOT NULL,
     engine_test varchar(255) NOT NULL,
-    gearch_test varchar(255) NOT NULL,
+    gear_test varchar(255) NOT NULL,
     back_acss VARCHAR(255) NOT NULL
 
 );
