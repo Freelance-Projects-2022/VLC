@@ -33,8 +33,7 @@ CREATE TABLE role_permission (
 -- ====================================================//Create user Table
 CREATE TABLE users (
     id int not null auto_increment primary key,
-    firstName varchar(255) not null,
-    lastName varchar(255) not null,
+    fullName varchar(255) not null,
     phone varchar(255) not null UNIQUE ,
     password varchar(255) not null,
     role_id int not null,
@@ -92,16 +91,16 @@ VALUES
 -- ====================================================// user Table Data
 
 INSERT INTO
-    users (firstName, lastName, phone, password, role_id)
+    users (fullName, phone, password, role_id)
 VALUES
-    ('iyad', 'saadeh', '0780000000', '$10$FSdYblJJZQgmg6rhK3ImdOAKT2RNpisW1BQrrgbAol7ulbWtspxBG', 2);
+    ('iyad saadeh', '0780000000', '$10$FSdYblJJZQgmg6rhK3ImdOAKT2RNpisW1BQrrgbAol7ulbWtspxBG', 2);
 
     INSERT INTO
-    users (firstName, lastName, phone, password, role_id)
+    users (fullName, phone, password, role_id)
 VALUES
-    ('Haitham', 'Alulaimi', '0790000000', '$10$FSdYblJJZQgmg6rhK3ImdOAKT2RNpisW1BQrrgbAol7ulbWtspxBG', 2);
+    ('Haitham Alulaimi', '0790000000', '$10$FSdYblJJZQgmg6rhK3ImdOAKT2RNpisW1BQrrgbAol7ulbWtspxBG', 2);
 
         INSERT INTO
-    users (firstName, lastName, phone, password, role_id)
+    users (fullName, phone, password, role_id)
 VALUES
-    ('admin', 'admin', '0770000000', '$10$FSdYblJJZQgmg6rhK3ImdOAKT2RNpisW1BQrrgbAol7ulbWtspxBG', 1);
+    ('adminadmin', '0770000000', '$10$FSdYblJJZQgmg6rhK3ImdOAKT2RNpisW1BQrrgbAol7ulbWtspxBG', 1);

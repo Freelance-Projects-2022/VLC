@@ -6,8 +6,8 @@ const jwt = require("jsonwebtoken");
 
 //====================================================// admin Login Function
 const adminLogin = (req, res, next) => {
-  const password = req.body.password;
   const usersname = req.body.usersname;
+  const password = req.body.password;
   const query = `SELECT * FROM admin WHERE usersname=?`;
   const data = [phone];
   connection.query(query, data, async (err, result) => {

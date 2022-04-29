@@ -9,7 +9,6 @@ const createNewUser = async (req, res) => {
     password = await bcrypt.hash(password, 10);
     const data = [firstName, lastName, password,  phone, role_id];
     connection.query(query, data, (err, result) => {
-        console.log(err);
       if (!err) {
         return res.status(200).json({
           success: true,
