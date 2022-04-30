@@ -9,6 +9,9 @@ import "./HybridTest.css";
 
 //====================================================//Body Car Test  Function
 const HybridTest = () => {
+  const [car_no, setCar_no] = useState("");
+  const [car_brand, setCar_brand] = useState("");
+  const [car_vin, setCar_vin] = useState("");
   const [engine_test, setEngine_test] = useState("");
   const [transmission, setTransmission] = useState("");
   const [srs, setSrs] = useState("");
@@ -26,6 +29,9 @@ const HybridTest = () => {
     e.preventDefault();
     try {
       const res = await axios.post("http://localhost:5000/cartest/hybridcar", {
+        car_no: car_no,
+        car_brand: car_brand,
+        car_vin: car_vin,
         engine_test: engine_test,
         transmission: transmission,
         srs: srs,
@@ -46,6 +52,9 @@ const HybridTest = () => {
           showConfirmButton: false,
           timer: 2000,
         });
+        setCar_no("");
+        setCar_brand("");
+        setCar_vin("");
         setEngine_test("");
         setTransmission("");
         setSrs("");
@@ -85,6 +94,42 @@ const HybridTest = () => {
         <div>
           <input
             required
+            className="car_no"
+            type="text"
+            value={car_no}
+            onChange={(e) => {
+              setCar_no(e.target.value);
+            }}
+          />
+          <label className="">Car No.</label>
+        </div>{" "}
+        <div>
+          <input
+            required
+            className="car_type"
+            type="text"
+            value={car_brand}
+            onChange={(e) => {
+              setCar_brand(e.target.value);
+            }}
+          />
+          <label className="">Car Brand</label>
+        </div>{" "}
+        <div>
+          <input
+            required
+            className="car_vin"
+            type="text"
+            value={car_vin}
+            onChange={(e) => {
+              setCar_vin(e.target.value);
+            }}
+          />
+          <label className="">engine_test</label>
+        </div>
+        <div>
+          <input
+            required
             className="engine_test"
             type="text"
             value={engine_test}
@@ -94,7 +139,6 @@ const HybridTest = () => {
           />
           <label className="">engine_test</label>
         </div>
-
         <div>
           <input
             required

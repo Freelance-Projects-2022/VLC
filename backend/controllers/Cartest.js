@@ -44,6 +44,9 @@ const petrolCarTest = (req, res) => {
 
 const HybridCarTest = (req, res) => {
   const {
+    car_no,
+    car_brand,
+    car_vin,
     engine_test,
     transmission,
     srs,
@@ -56,38 +59,13 @@ const HybridCarTest = (req, res) => {
     soh,
     note,
   } = req.body;
-  console.log("🚀 ~ file: Cartest.js ~ line 58 ~ HybridCarTest ~ note", note);
-  console.log(
-    "🚀 ~ file: Cartest.js ~ line 60 ~ HybridCarTest ~ engine_test",
-    engine_test
-  );
-  console.log(
-    "🚀 ~ file: Cartest.js ~ line 60 ~ HybridCarTest ~ transmission",
-    transmission
-  );
-  console.log("🚀 ~ file: Cartest.js ~ line 60 ~ HybridCarTest ~ srs", srs);
-  console.log(
-    "🚀 ~ file: Cartest.js ~ line 60 ~ HybridCarTest ~ abs_system",
-    abs_system
-  );
-  console.log("🚀 ~ file: Cartest.js ~ line 60 ~ HybridCarTest ~ ac", ac);
-  console.log(
-    "🚀 ~ file: Cartest.js ~ line 60 ~ HybridCarTest ~ hybrid_system",
-    hybrid_system
-  );
-  console.log(
-    "🚀 ~ file: Cartest.js ~ line 60 ~ HybridCarTest ~ hv_battery",
-    hv_battery
-  );
-  console.log(
-    "🚀 ~ file: Cartest.js ~ line 60 ~ HybridCarTest ~ eleectric_system",
-    eleectric_system
-  );
-  console.log("🚀 ~ file: Cartest.js ~ line 60 ~ HybridCarTest ~ emc", emc);
-  console.log("🚀 ~ file: Cartest.js ~ line 60 ~ HybridCarTest ~ soh", soh);
+
   const query =
-    "INSERT INTO hybrid_car (  engine_test,transmission,srs,abs_system,ac,hybrid_system,hv_battery,eleectric_system,emc,soh,note) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+    "INSERT INTO hybrid_car (   car_no, car_brand,car_vin, engine_test,transmission,srs,abs_system,ac,hybrid_system,hv_battery,eleectric_system,emc,soh,note) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
   const data = [
+    car_no,
+    car_brand,
+    car_vin,
     engine_test,
     transmission,
     srs,

@@ -52,7 +52,7 @@ CREATE TABLE users (
 CREATE TABLE petrol_car(
     id int not null auto_increment primary key,
     car_no VARCHAR(255),
-    car_type VARCHAR(255),
+    car_brand VARCHAR(255),
     car_vin VARCHAR(255),
     car_color VARCHAR(255),
     car_model VARCHAR(255),
@@ -71,7 +71,7 @@ CREATE TABLE petrol_car(
 CREATE TABLE hybrid_car(
     id int not null auto_increment primary key,
     car_no VARCHAR(255),
-    car_type VARCHAR(255),
+    car_brand VARCHAR(255),
     car_vin VARCHAR(255),
     engine_test varchar(255),
     transmission varchar(255),
@@ -153,11 +153,10 @@ VALUES
 INSERT into
     petrol_car (
         car_no,
-        car_type,
+        car_brand,
         car_vin,
         car_color,
         car_model,
-
         vin_tr,
         vin_tl,
         vin_br,
@@ -188,7 +187,7 @@ values
 insert into
     hybrid_car (
         car_no,
-        car_type,
+        car_brand,
         car_vin,
         engine_test,
         transmission,
