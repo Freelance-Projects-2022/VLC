@@ -12,6 +12,7 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPasssword] = useState("");
   const [phone, setPhone] = useState("");
+  const [rePassword, setRePassword] = useState("");
   const [role_id, setRole_id] = useState("2");
 
   // ===============================================  RegisterUser Function
@@ -21,6 +22,7 @@ const Register = () => {
       const res = await axios.post("http://localhost:5000/register", {
         username: username,
         password: password,
+        rePassword: rePassword,
         phone: phone,
         role_id: role_id,
       });
@@ -32,6 +34,10 @@ const Register = () => {
           showConfirmButton: false,
           timer: 2000,
         });
+        setUsername("");
+        setPasssword("");
+        setPhone("");
+        setRePassword("");
         navigate("/login");
       } else throw Error;
     } catch (error) {
@@ -72,6 +78,8 @@ const Register = () => {
           placeholder="أسم المستخدم"
           className="userNameField"
           type="text"
+          minLength={4}
+          value={username}
           onChange={(e) => {
             setUsername(e.target.value);
           }}
@@ -81,6 +89,8 @@ const Register = () => {
           required
           className="phoneField"
           type="text"
+          value={phone}
+          minLength={10}
           onChange={(e) => {
             setPhone(e.target.value);
           }}
@@ -90,8 +100,21 @@ const Register = () => {
           required
           className="passwordField"
           type="password"
+          value={password}
+          minLength={6}
           onChange={(e) => {
             setPasssword(e.target.value);
+          }}
+        />
+        <input
+          placeholder="إعادة كلمة السر"
+          required
+          value={rePassword}
+          minLength={6}
+          className="rePasswordField"
+          type="password"
+          onChange={(e) => {
+            setRePassword(e.target.value);
           }}
         />
 

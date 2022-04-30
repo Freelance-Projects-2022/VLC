@@ -13,7 +13,7 @@ const adminLogin = (req, res, next) => {
     if (!result.length) {
       return res.status(403).json({
         success: false,
-        message: `This is account dose not exist`,
+        message: `هذا الحساب غير مسجل مسبقاً`,
       });
     } else {
       try {
@@ -21,7 +21,7 @@ const adminLogin = (req, res, next) => {
         if (!valid) {
           return res.status(403).json({
             success: false,
-            message: `The password you’ve entered is incorrect`,
+            message: `كلمة السر المدخلة غير صحيحة`,
           });
         }
         const payload = {
@@ -35,7 +35,7 @@ const adminLogin = (req, res, next) => {
 
         return res.status(200).json({
           success: true,
-          message: `Login Successfully`,
+          message: `تم تسجيل الدخول بنجاح`,
           token: token,
           userId: result,
           role: result[0].roleId,
@@ -62,7 +62,7 @@ const userLogin = (req, res, next) => {
         if (!valid) {
           return res.status(403).json({
             success: false,
-            message: `The password you’ve entered is incorrect`,
+            message: `كلمة السر المدخلة غير صحيحة`,
           });
         }
         const payload = {
@@ -75,7 +75,7 @@ const userLogin = (req, res, next) => {
         const token = await jwt.sign(payload, process.env.SECRET, options);
         return res.status(200).json({
           success: true,
-          message: `Login Successfully`,
+          message: `تم تسجيل الدخول بنجاح`,
           token: token,
           userId: result,
           role: result[0].roleId,

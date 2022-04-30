@@ -40,16 +40,16 @@ CREATE TABLE role_permission (
 -- ====================================================//Create user Table
 CREATE TABLE users (
     id int not null auto_increment primary key,
-    username varchar(255) not null,
-    phone varchar(255) not null UNIQUE,
+    username varchar(255) not null UNIQUE,
+    phone varchar(255) not null ,
     password varchar(255) not null,
     role_id int not null,
     is_deleted TINYINT Default 0,
     Foreign key (role_id) references Role(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- ====================================================//Create petrol_car Table
-CREATE TABLE petrol_car(
+-- ====================================================//Create body_test Table
+CREATE TABLE body_Test(
     id int not null auto_increment primary key,
     car_no VARCHAR(255),
     car_brand VARCHAR(255),
@@ -64,11 +64,14 @@ CREATE TABLE petrol_car(
     engine_test varchar(255),
     gear_test varchar(255),
     back_acss VARCHAR(255),
+     test_price decimal,
+    car_order_no VARCHAR(255),
+    car_notes VARCHAR(255),
     is_deleted TINYINT Default 0
 );
 
--- ====================================================//Create hybrid_car Table
-CREATE TABLE hybrid_car(
+-- ====================================================//Create hybrid_Test Table
+CREATE TABLE hybrid_Test(
     id int not null auto_increment primary key,
     car_no VARCHAR(255),
     car_brand VARCHAR(255),
@@ -84,10 +87,10 @@ CREATE TABLE hybrid_car(
     emc varchar(255),
     soh varchar(255),
     note varchar(255),
-    is_deleted TINYINT Default 0,
     test_price decimal,
     car_order_no VARCHAR(255),
-    car_notes VARCHAR(255)
+    car_notes VARCHAR(255),
+    is_deleted TINYINT Default 0
 );
 
 -- ====================================================//Create order_test Table
@@ -101,7 +104,7 @@ CREATE TABLE hybrid_car(
 --     car_order_no VARCHAR(255) NOT NULL,
 --     car_notes VARCHAR(255) NOT NULL,
 --     test_price decimal NOT NULL,
---     car_petrol_test int not null,
+--    car_Body_test_test int not null,
 --     car_hybrid_test int not null,
 --     is_deleted TINYINT Default 0,
 --     Foreign key (car_petrol_test) references petrol_car(id) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -149,9 +152,9 @@ VALUES
         1
     );
 
--- ====================================================// Petrol cars Table Data
+-- ====================================================// Body cars Table Data
 INSERT into
-    petrol_car (
+    body_Test (
         car_no,
         car_brand,
         car_vin,
@@ -185,7 +188,7 @@ values
 
 -- ====================================================// hybrid cars Table Data
 insert into
-    hybrid_car (
+    hybrid_Test (
         car_no,
         car_brand,
         car_vin,

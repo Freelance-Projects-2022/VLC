@@ -23,6 +23,8 @@ const HybridTest = () => {
   const [emc, setEmc] = useState("");
   const [soh, setSoh] = useState("");
   const [note, setNote] = useState("");
+  const [test_price, setTest_price] = useState("");
+  const [car_notes, setCar_notes] = useState("");
 
   const hybridCarTest = async (e) => {
     console.log("itsworking");
@@ -43,6 +45,8 @@ const HybridTest = () => {
         emc: emc,
         soh: soh,
         note: note,
+        test_price: test_price,
+        car_notes: car_notes,
       });
       if (res.data.success) {
         Swal.fire({
@@ -268,6 +272,32 @@ const HybridTest = () => {
             }}
           />
           <label className="">note</label>
+        </div>
+        <div>
+          <input
+            required
+            placeholder=""
+            value={test_price}
+            className="test_price"
+            type="text"
+            onChange={(e) => {
+              setTest_price(e.target.value);
+            }}
+          />
+          <label className="">test_price</label>
+        </div>{" "}
+        <div>
+          <input
+            required
+            placeholder=""
+            value={car_notes}
+            className="car_notes"
+            type="text"
+            onChange={(e) => {
+              setCar_notes(e.target.value);
+            }}
+          />
+          <label className="">Personal Notes</label>
         </div>
         <button type="submit" className="submit_Button_Register">
           done
