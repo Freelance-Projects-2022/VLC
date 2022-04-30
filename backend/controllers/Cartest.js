@@ -316,6 +316,98 @@ const deletehybridcar = (req, res) => {
     });
   });
 };
+//====================================================//update hybrid car By Id Function
+
+const updateHybridCarById = async (req, res) => {
+  const {
+    id,
+    engine_test,
+    transmission,
+    srs,
+    abs_system,
+    ac,
+    hybrid_system,
+    hv_battery,
+    eleectric_system,
+    emc,
+    soh,
+    note,
+  } = req.body;
+  const data = [
+    engine_test,
+    transmission,
+    srs,
+    abs_system,
+    ac,
+    hybrid_system,
+    hv_battery,
+    eleectric_system,
+    emc,
+    soh,
+    note,
+    id,
+  ];
+  const query = `UPDATE hybrid_car SET engine_test=?,transmission=?,srs=?,abs_system=?,ac=?,hybrid_system=?,hv_battery=?,eleectric_system=?,emc=?,soh=?,note=? WHERE id= ?`;
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        massage: "Server Error",
+        err: err,
+      });
+    } else {
+      return res.status(200).json({
+        success: true,
+        massage: `Car Test Update Successfully`,
+        results: result,
+      });
+    }
+  });
+};
+
+//====================================================//update petrol car By Id Function
+
+const updatePetrolCarById = async (req, res) => {
+  const {
+    vin_tr,
+    vin_tl,
+    vin_br,
+    vin_bl,
+    body_note,
+    engine_test,
+    gear_test,
+    back_acss,
+    id,
+  } = req.body;
+  const data = [
+    vin_tr,
+    vin_tl,
+    vin_br,
+    vin_bl,
+    body_note,
+    engine_test,
+    gear_test,
+    back_acss,
+    id,
+  ];
+  const query = `UPDATE petrol_car SET vin_tr=?,vin_tl=?,vin_br=?,vin_bl=?,body_note=?,engine_test=?,gear_test=?,back_acss=? WHERE id= ?`;
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        massage: "Server Error",
+        err: err,
+      });
+    } else {
+      return res.status(200).json({
+        success: true,
+        massage: `Car Test Update Successfully`,
+        results: result,
+      });
+    }
+  });
+};
+
 //====================================================// module.exports
 module.exports = {
   petrolCarTest,
@@ -326,4 +418,6 @@ module.exports = {
   deletehybridcar,
   getCarByCarNo,
   getCarByCarVin,
+  updateHybridCarById,
+  updatePetrolCarById,
 };
