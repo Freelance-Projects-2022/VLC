@@ -105,6 +105,96 @@ const getPetrolCars = (req, res) => {
   });
 };
 
+//====================================================//get car depend on car_no
+const getCarByCarNo = (req, res) => {
+  const carNo = req.body.carNo;
+  const data = [carNo];
+  const query = " SELECT *  FROM order_test where car_no=? And is_deleted =0";
+  connection.query(query, data, (err, result) => {
+    try {
+      if (result.length === 0) {
+        return res.status(404).json({
+          success: false,
+          massage: "No Car Test Found",
+          err: err,
+        });
+        // result are the data returned by mysql server
+      } else {
+        const carId = result[0].id;
+        const data = [carId, carId, carId];
+        const query =
+          "select * from hybrid_car hc join petrol_car pc on hc.id=? and pc.id=? join order_test ot on ot.id=?";
+        connection.query(query, data, (err, result) => {
+          if (err) {
+            return res.status(500).json({
+              success: false,
+              massage: "Server Error",
+              err: err,
+            });
+          } else {
+            return res.status(200).json({
+              success: true,
+              massage: `No Car Test Found`,
+              result: result,
+            });
+          }
+        });
+      }
+    } catch {
+      res.status(500).json({
+        success: false,
+        massage: "server error",
+        err: err,
+      });
+    }
+  });
+};
+
+// //====================================================//get car depend on vin
+// const getCarByCarVin = (req, res) => {
+//   const carNo = req.body.carVin;
+//   const data = [carNo];
+//   const query = " SELECT *  FROM order_test where car_no=? And is_deleted =0";
+//   connection.query(query, data, (err, result) => {
+//     try {
+//       if (result.length === 0) {
+//         return res.status(404).json({
+//           success: false,
+//           massage: "No test belong for this number",
+//           err: err,
+//         });
+//         // result are the data returned by mysql server
+//       } else {
+//         const carId = result[0].id;
+//         const data = [carId];
+//         const query =
+//           "  SELECT *  FROM order_test as ot  Join hybrid_car as hc on ot.id=hc.id Join petrol_car pc on ot.id=pc.id where ot.is_deleted = 0";
+//         connection.query(query, data, (err, result) => {
+//           if (err) {
+//             return res.status(404).json({
+//               success: false,
+//               massage: "No test belong for this number",
+//               err: err,
+//             });
+//           } else {
+//             return res.status(200).json({
+//               success: true,
+//               massage: `car with No => ${carId} test info`,
+//               results: result,
+//             });
+//           }
+//         });
+//       }
+//     } catch {
+//       res.status(500).json({
+//         success: false,
+//         massage: "server error",
+//         err: err,
+//       });
+//     }
+//   });
+// };
+
 //====================================================//get all hybrid Cars  where is_deleted =0
 const gethybridCars = (req, res) => {
   const query = "SELECT * FROM vlc.hybrid_car where is_deleted=0;;";
@@ -187,5 +277,6 @@ module.exports = {
   getPetrolCars,
   gethybridCars,
   deletePetrolCar,
-  deletehybridcar
+  deletehybridcar,
+  getCarByCarNo,
 };
