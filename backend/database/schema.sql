@@ -77,22 +77,22 @@ CREATE TABLE hybrid_car(
     is_deleted TINYINT Default 0
 );
 
--- ====================================================//Create petrol_car Table
+-- ====================================================//Create order_test Table
 CREATE TABLE order_test(
     id int not null auto_increment primary key,
     car_no VARCHAR(255) NOT NULL,
     car_type VARCHAR(255) NOT NULL,
-    vin VARCHAR(255) NOT NULL,
-    color VARCHAR(255) NOT NULL,
-    model VARCHAR(255) NOT NULL,
-    order_no VARCHAR(255) NOT NULL,
-    notes VARCHAR(255) NOT NULL,
-    price decimal NOT NULL,
-    petrol_test int not null,
-    hybrid_test int not null,
+    car_vin VARCHAR(255) NOT NULL,
+   car_color VARCHAR(255) NOT NULL,
+   car_model VARCHAR(255) NOT NULL,
+    car_order_no VARCHAR(255) NOT NULL,
+   car_notes VARCHAR(255) NOT NULL,
+    test_price decimal NOT NULL,
+   car_petrol_test int not null,
+   car_hybrid_test int not null,
     is_deleted TINYINT Default 0,
-    Foreign key (petrol_test) references petrol_car(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    Foreign key (hybrid_test) references hybrid_car(id) ON DELETE CASCADE ON UPDATE CASCADE
+    Foreign key (car_petrol_test) references petrol_car(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    Foreign key (car_hybrid_test) references hybrid_car(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- =====================================================//Role DATA
