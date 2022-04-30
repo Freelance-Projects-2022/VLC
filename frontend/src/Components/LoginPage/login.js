@@ -1,4 +1,4 @@
-// //====================================================//Require
+//====================================================//Require
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -7,14 +7,14 @@ import Swal from "sweetalert2";
 // CSS File
 import "./login.css";
 
-// //====================================================//Create Login Function
+//====================================================//Create Login Function
 
 const Login = () => {
   const history = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  //   //======================================================//CheckUser Function
+  //======================================================//CheckUser Function
   const checkUser = async (e) => {
     console.log("run");
     e.preventDefault();
@@ -52,9 +52,8 @@ const Login = () => {
       });
     }
   };
-  //   //======================================================//UseEffect
-  //   useEffect(() => {}, [message]);
-  //   //======================================================//Return
+
+  //======================================================//Return
   return (
     <div className="MainLoginDev">
       <form onSubmit={checkUser} className="loginForm">

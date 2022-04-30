@@ -64,9 +64,7 @@ const Register = () => {
           className="userRole"
           required
         >
-          <option selected value="2">
-            موظف
-          </option>
+          <option value="2">موظف</option>
           <option value="1">مدير</option>
         </select>
         <input
