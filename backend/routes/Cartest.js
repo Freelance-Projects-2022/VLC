@@ -3,28 +3,32 @@ const express = require("express");
 
 //====================================================//Require Functions
 const {
-  petrolCarTest,
-  HybridCarTest,
-  getPetrolCars,
   gethybridCars,
-  deletePetrolCar,
+  bodyTest,
+  HybridTest,
+  getBodyTest,
+  deleteBodyTest,
+  updateHybridTestById,
+  updatebodyTestById,
   deletehybridcar,
-  getCarByCarNo,
-  getCarByCarVin,
-  updateHybridCarById,
-  updatePetrolCarById,
+  // getCarByCarNo,
+  // getCarByCarVin,
 } = require("../controllers/Cartest");
+
+//====================================================//Create car Test Router
 const CarTestRouter = express.Router();
-CarTestRouter.post("/petrolCar", petrolCarTest);
-CarTestRouter.post("/hybridCar", HybridCarTest);
-CarTestRouter.get("/getpetroltest", getPetrolCars);
+
+//====================================================// ENDPOINTS
+CarTestRouter.post("/BodyTest", bodyTest);
+CarTestRouter.post("/hybridCar", HybridTest);
+CarTestRouter.get("/getbodytests", getBodyTest);
 CarTestRouter.get("/gethybridtest", gethybridCars);
-CarTestRouter.delete("/deletepetrolcar", deletePetrolCar);
-CarTestRouter.delete("/deletehybridcar", deletehybridcar);
-CarTestRouter.get("/getcarbyno", getCarByCarNo);
-CarTestRouter.get("/getCarByCarVin", getCarByCarVin);
-CarTestRouter.put("/updatehybridcarbyid", updateHybridCarById);
-CarTestRouter.put("/updatepetrolcarbyid", updatePetrolCarById);
+CarTestRouter.delete("/deletebodytest", deleteBodyTest);
+CarTestRouter.delete("/deletehybridtest", deletehybridcar);
+// CarTestRouter.get("/getcarbyno", getCarByCarNo);
+// CarTestRouter.get("/getCarByCarVin", getCarByCarVin);
+CarTestRouter.put("/updatehybridtest", updateHybridTestById);
+CarTestRouter.put("/updatebodytestbyid", updatebodyTestById);
 
 //====================================================// module.exports
 

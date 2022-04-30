@@ -4,20 +4,13 @@ const bcrypt = require("bcrypt");
 
 //====================================================//Create New user Function
 const createNewUser = async (req, res) => {
-  let { username, password, phone, role_id } = req.body;
-  console.log(
-    "🚀 ~ file: Register.js ~ line 8 ~ createNewUser ~ username",
-    username
-  );
-  console.log(
-    "🚀 ~ file: Register.js ~ line 8 ~ createNewUser ~ password",
-    password
-  );
-  console.log("🚀 ~ file: Register.js ~ line 8 ~ createNewUser ~ phone", phone);
-  console.log(
-    "🚀 ~ file: Register.js ~ line 8 ~ createNewUser ~ role_id",
-    role_id
-  );
+  let { username, password, rePassword, phone, role_id } = req.body;
+  if (password != rePassword) {
+    return res.status(500).json({
+      success: false,
+      message: "كلمة السر غير متطابقة",
+    });
+  }
   const query = `INSERT INTO users (username,password,phone,role_id) VALUES (?,?,?,?)`;
   password = await bcrypt.hash(password, 10);
   const data = [username, password, phone, role_id];
@@ -25,13 +18,13 @@ const createNewUser = async (req, res) => {
     if (!err) {
       return res.status(200).json({
         success: true,
-        message: "SignUp Successfully",
+        message: "تم تسجيل الحساب بنجاح",
         result: result,
       });
     } else {
       return res.status(409).json({
         success: false,
-        message: " This account already exists",
+        message: `هذا الحساب تم تسجيله مسبقاً`,
       });
     }
   });
