@@ -1,9 +1,14 @@
 import "./App.css";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import LoginPage from "./Components/LoginPage/login";
 
 function App() {
   return (
     <div className="App">
-      <h1>Start project 5</h1>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
     </div>
   );
 }
