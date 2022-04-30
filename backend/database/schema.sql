@@ -38,7 +38,7 @@ CREATE TABLE role_permission (
 -- ====================================================//Create user Table
 CREATE TABLE users (
     id int not null auto_increment primary key,
-    fullName varchar(255) not null,
+    username varchar(255) not null,
     phone varchar(255) not null UNIQUE,
     password varchar(255) not null,
     role_id int not null,
@@ -108,7 +108,7 @@ VALUES
 
 -- ====================================================// user Table Data
 INSERT INTO
-    users (fullName, phone, password, role_id)
+    users (username, phone, password, role_id)
 VALUES
     (
         'iyad',
@@ -118,7 +118,7 @@ VALUES
     );
 
 INSERT INTO
-    users (fullName, phone, password, role_id)
+    users (username, phone, password, role_id)
 VALUES
     (
         'Haitham',
@@ -128,7 +128,7 @@ VALUES
     );
 
 INSERT INTO
-    users (fullName, phone, password, role_id)
+    users (username, phone, password, role_id)
 VALUES
     (
         'admin',

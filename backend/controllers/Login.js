@@ -6,25 +6,27 @@ const jwt = require("jsonwebtoken");
 //====================================================// admin Login Function
 const adminLogin = (req, res, next) => {
   const username = req.body.username;
+  console.log("🚀 ~ file: Login.js ~ line 9 ~ adminLogin ~ username", username);
   const password = req.body.password;
-  const query = `SELECT * FROM users WHERE fullName=?`;
+  console.log(
+    "🚀 ~ file: Login.js ~ line 11 ~ adminLogin ~ password",
+    password
+  );
+  const query = `SELECT * FROM users WHERE username=?`;
   const data = [username];
-  console.log("fullName", username);
-  console.log("password", password);
-
   connection.query(query, data, async (err, result) => {
-    console.log("result", result);
+    console.log(
+      "🚀 ~ file: Login.js ~ line 13 ~ connection.query ~ result",
+      result
+    );
     if (!result.length) {
-      console.log("from inside  This is account dose not exist");
       return res.status(403).json({
         success: false,
         message: `This is account dose not exist`,
       });
     } else {
       try {
-        console.log("passwordwwwwwwwwwwwwwwwwwwww", result[0].password);
         const valid = await bcrypt.compare(password, result[0].password);
-        console.log("validvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv", valid);
         if (!valid) {
           return res.status(403).json({
             success: false,
