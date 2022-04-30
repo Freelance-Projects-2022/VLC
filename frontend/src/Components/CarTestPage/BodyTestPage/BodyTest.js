@@ -9,6 +9,11 @@ import Swal from "sweetalert2";
 
 //====================================================//Body Car Test  Function
 const BodyTest = () => {
+  const [car_color, setCar_color] = useState("");
+  const [car_model, setCar_model] = useState("");
+  const [car_no, setCar_no] = useState("");
+  const [car_brand, setCar_brand] = useState("");
+  const [car_vin, setCar_vin] = useState("");
   const [vin_tr, setVin_tr] = useState("");
   const [vin_tl, setVin_tl] = useState("");
   const [vin_br, setVin_br] = useState("");
@@ -17,13 +22,21 @@ const BodyTest = () => {
   const [engine_test, setEngine_test] = useState("");
   const [gear_test, setGear_test] = useState("");
   const [back_acss, setBack_acss] = useState("");
+  const [note, setNote] = useState("");
+  const [test_price, setTest_price] = useState("");
+  const [car_notes, setCar_notes] = useState("");
 
   // ===============================================  Car Body Test Function
 
   const carBodyTest = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/cartest/petrolcar", {
+      const res = await axios.post("http://localhost:5000/cartest/BodyTest", {
+        car_color: car_color,
+        car_model: car_model,
+        car_no: car_no,
+        car_brand: car_brand,
+        car_vin: car_vin,
         vin_tr: vin_tr,
         vin_tl: vin_tl,
         vin_br: vin_br,
@@ -32,6 +45,9 @@ const BodyTest = () => {
         engine_test: engine_test,
         gear_test: gear_test,
         back_acss: back_acss,
+        note: note,
+        test_price: test_price,
+        car_notes: car_notes,
       });
       if (res.data.success) {
         Swal.fire({
@@ -49,6 +65,13 @@ const BodyTest = () => {
         setEngine_test("");
         setGear_test("");
         setBack_acss("");
+        setCar_color("");
+        setCar_model("");
+        setCar_no("");
+        setCar_brand("");
+        setNote("");
+        setTest_price("");
+        setCar_notes("");
       } else throw Error;
     } catch (error) {
       if (error.response && error.response.data) {
@@ -70,12 +93,59 @@ const BodyTest = () => {
       });
     }
   };
-  //======================================================//Use Effect
 
   //======================================================//Return
   return (
     <div className="bodyTestMainDiv">
       <form className="bodyTestForm" onSubmit={carBodyTest}>
+        <div>
+          <input
+            required
+            className="car_color"
+            type="text"
+            value={car_color}
+            onChange={(e) => {
+              setCar_color(e.target.value);
+            }}
+          />
+          <label className="">car_color</label>
+        </div>{" "}
+        <div>
+          <input
+            required
+            className="setCar_model"
+            type="text"
+            value={car_model}
+            onChange={(e) => {
+              setCar_model(e.target.value);
+            }}
+          />
+          <label className="">car_model</label>
+        </div>{" "}
+        <div>
+          <input
+            required
+            className="car_no"
+            type="text"
+            value={car_no}
+            onChange={(e) => {
+              setCar_no(e.target.value);
+            }}
+          />
+          <label className="">Car No.</label>
+        </div>{" "}
+        <div>
+          <input
+            required
+            className="car_brand"
+            type="text"
+            value={car_brand}
+            onChange={(e) => {
+              setCar_brand(e.target.value);
+            }}
+          />
+          <label className="">Car Brand</label>
+        </div>{" "}
         <div>
           <input
             required
@@ -88,7 +158,6 @@ const BodyTest = () => {
           />
           <label className="">فحص الشاصي الامامي اليمين</label>
         </div>
-
         <div>
           <input
             required
@@ -179,6 +248,45 @@ const BodyTest = () => {
             }}
           />
           <label className="">فحص بككس /أكسات</label>
+        </div>
+        <div>
+          <input
+            required
+            placeholder=""
+            value={note}
+            className="note"
+            type="text"
+            onChange={(e) => {
+              setNote(e.target.value);
+            }}
+          />
+          <label className="">note</label>
+        </div>
+        <div>
+          <input
+            required
+            placeholder=""
+            value={test_price}
+            className="test_price"
+            type="number"
+            onChange={(e) => {
+              setTest_price(e.target.value);
+            }}
+          />
+          <label className="">test_price</label>
+        </div>{" "}
+        <div>
+          <input
+            required
+            placeholder=""
+            value={car_notes}
+            className="car_notes"
+            type="text"
+            onChange={(e) => {
+              setCar_notes(e.target.value);
+            }}
+          />
+          <label className="">Personal Notes</label>
         </div>
         <button type="submit" className="submit_Button_Register">
           done

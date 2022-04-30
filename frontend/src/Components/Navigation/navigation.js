@@ -33,12 +33,17 @@ const Navigation = () => {
       </div>
       <div>
         <Link to="/bodyTest" alt="test">
-          فحص سيارة (بودي)
+          إنشاء فحص سيارة (بودي)
         </Link>
       </div>
       <div>
         <Link to="/hybridTest" alt="test">
-          فحص سيارة (هايبرد)
+          إنشاء فحص سيارة (هايبرد)
+        </Link>
+      </div>
+      <div>
+        <Link to="/history" alt="test">
+          السجلات{" "}
         </Link>
       </div>
     </div>
