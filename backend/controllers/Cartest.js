@@ -21,6 +21,48 @@ const bodyTest = (req, res) => {
     test_price,
     car_notes,
   } = req.body;
+  console.log(
+    "🚀 ~ file: Cartest.js ~ line 23 ~ bodyTest ~ car_notes",
+    car_notes
+  );
+  console.log(
+    "🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ test_price",
+    test_price
+  );
+  console.log(
+    "🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ back_acss",
+    back_acss
+  );
+  console.log(
+    "🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ gear_test",
+    gear_test
+  );
+  console.log(
+    "🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ engine_test",
+    engine_test
+  );
+  console.log(
+    "🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ body_note",
+    body_note
+  );
+  console.log("🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ vin_bl", vin_bl);
+  console.log("🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ vin_br", vin_br);
+  console.log("🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ vin_tl", vin_tl);
+  console.log("🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ vin_tr", vin_tr);
+  console.log(
+    "🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ car_model",
+    car_model
+  );
+  console.log(
+    "🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ car_color",
+    car_color
+  );
+  console.log("🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ car_vin", car_vin);
+  console.log(
+    "🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ car_brand",
+    car_brand
+  );
+  console.log("🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ car_no", car_no);
 
   const car_order_no = uuid().slice(0, 6);
 
@@ -271,6 +313,49 @@ const getBodyTest = (req, res) => {
 //   });
 // };
 
+//====================================================//get car depend on order no
+const getCarByOrderNo = (req, res) => {
+  let resultObj = {};
+  const car_order_no = req.body.car_order_no;
+  const data = [car_order_no];
+  const query =
+    " SELECT *  FROM hybrid_test where car_order_no=? And is_deleted =0";
+  connection.query(query, data, (err, result) => {
+    try {
+      if (result.length != 0) {
+        resultObj.bodyTest = result[0];
+      } else {
+        const data = [car_order_no];
+        const query =
+          "select * from body_test where car_order_no=? And is_deleted =0";
+
+        connection.query(query, data, (err, result) => {
+          if (result.length != 0) {
+            resultObj.hybridTest = result[0];
+
+            return res.status(200).json({
+              success: true,
+              massage: `تمت عملية البحث بنجاح`,
+              result: resultObj,
+            });
+          } else {
+            return res.status(404).json({
+              success: false,
+              massage: "لا يوجد فحص متوفر ",
+            });
+          }
+        });
+      }
+    } catch {
+      res.status(500).json({
+        success: false,
+        massage: "server error",
+        err: err,
+      });
+    }
+  });
+};
+
 //====================================================//get all hybrid Cars  where is_deleted =0
 const gethybridCars = (req, res) => {
   const query = "SELECT * FROM vlc.hybrid_Test where is_deleted=0;;";
@@ -475,6 +560,7 @@ module.exports = {
   updateHybridTestById,
   updatebodyTestById,
   deletehybridcar,
+  getCarByOrderNo,
   // getCarByCarNo,
   // getCarByCarVin,
 };

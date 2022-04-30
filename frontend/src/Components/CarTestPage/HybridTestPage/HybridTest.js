@@ -110,7 +110,7 @@ const HybridTest = () => {
         <div>
           <input
             required
-            className="car_type"
+            className="car_brand"
             type="text"
             value={car_brand}
             onChange={(e) => {
