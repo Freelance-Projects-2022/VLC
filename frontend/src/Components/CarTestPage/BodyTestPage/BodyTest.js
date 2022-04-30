@@ -17,7 +17,6 @@ const BodyTest = () => {
   const [engine_test, setEngine_test] = useState("");
   const [gear_test, setGear_test] = useState("");
   const [back_acss, setBack_acss] = useState("");
-  const [completeTest, setCompleteTest] = useState(false);
 
   // ===============================================  Car Body Test Function
 
@@ -70,10 +69,8 @@ const BodyTest = () => {
         timer: 2000,
       });
     }
-    setCompleteTest(true);
   };
   //======================================================//Use Effect
-  // useEffect(() => {}, [completeTest]);
 
   //======================================================//Return
   return (
