@@ -277,43 +277,37 @@ const getBodyTest = (req, res) => {
 
 //====================================================//get car depend on order no
 const getCarByOrderNo = (req, res) => {
-  let resultObj = {};
   const car_order_no = req.body.car_order_no;
   const data = [car_order_no];
-
   const query =
     " SELECT *  FROM hybrid_test where car_order_no=? And is_deleted =0";
-  connection.query(query, data, (err, result) => {
+  connection.query(query, data, (err, hybridResult) => {
     try {
-      if (result.length != 0) {
-        resultObj.hybrid_test = result[0];
+      if (hybridResult.length != 0) {
+        return res.status(200).json({
+          success: true,
+          message: `تم إيجاد فحص لرقم الفاتورة ${car_order_no}`,
+          result: hybridResult,
+        });
+      } else {
+        const data = [car_order_no];
+        const query =
+          "select * from body_test where car_order_no=? And is_deleted =0";
+        connection.query(query, data, (err, bodyResult) => {
+          if (bodyResult.length != 0) {
+            return res.status(200).json({
+              success: true,
+              message: `تم إيجاد فحص لرقم الفاتورة ${car_order_no}`,
+              result: bodyResult,
+            });
+          } else {
+            return res.status(404).json({
+              success: false,
+              message: `لا يوجد فحص متوفر لرقم الفاتورة ${car_order_no}`,
+            });
+          }
+        });
       }
-      const data = [car_order_no];
-      const query =
-        "select * from body_test where car_order_no=? And is_deleted =0";
-
-      connection.query(query, data, (err, result) => {
-        if (result.length != 0) {
-          resultObj.body_test = result[0];
-          return res.status(200).json({
-            success: true,
-            message: `تم إيجاد فحص لرقم الفاتورة ${car_order_no}`,
-            result: resultObj,
-          });
-        }
-        if (resultObj.hybrid_test || resultObj.body_test) {
-          return res.status(200).json({
-            success: true,
-            message: `تم إيجاد فحص لرقم الفاتورة لا يوجد فحص متوفر لرقم الفاتورة ${car_order_no}`,
-            result: resultObj,
-          });
-        } else {
-          return res.status(404).json({
-            success: false,
-            message: `لا يوجد فحص متوفر لرقم الفاتورة ${car_order_no}`,
-          });
-        }
-      });
     } catch {
       res.status(500).json({
         success: false,

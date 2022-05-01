@@ -169,7 +169,11 @@ INSERT into
         body_note,
         engine_test,
         gear_test,
-        back_acss
+        back_acss,
+        test_price,
+        car_order_no,
+        car_notes,
+        test_date
     )
 values
 (
@@ -185,7 +189,12 @@ values
         "لا يوجد مشاكل في البودي",
         "ماتور يحتاج صيانة",
         "الجير ممتاز",
-        "يحتاج الى صيانة"
+        "يحتاج الى صيانة",
+        "15",
+        "12345",
+        "لا ملاحظات",
+        "1-2-2021"
+
     );
 
 -- ====================================================// hybrid cars Table Data
@@ -204,7 +213,11 @@ insert into
         eleectric_system,
         emc,
         soh,
-        note
+        note,
+        test_price,
+        car_order_no,
+        car_notes,
+        test_date
     )
 values
     (
@@ -221,5 +234,9 @@ values
         "=========",
         "=========",
         "=========",
-        "========="
+        "=========",
+        "25",
+        "456789",
+        "no comments",
+        "4-6-2024"
     );
