@@ -13,8 +13,8 @@ const {
   deletehybridcar,
   getCarByOrderNo,
   getAllTest,
-  // getCarByCarNo,
-  // getCarByCarVin,
+  getCarByCarNo,
+  getCarByCarVin,
 } = require("../controllers/Cartest");
 
 //====================================================//Create car Test Router
@@ -27,9 +27,9 @@ CarTestRouter.get("/getbodytests", getBodyTest);
 CarTestRouter.get("/gethybridtest", gethybridCars);
 CarTestRouter.delete("/deletebodytest", deleteBodyTest);
 CarTestRouter.delete("/deletehybridtest", deletehybridcar);
-// CarTestRouter.get("/getcarbyno", getCarByCarNo);
-// CarTestRouter.get("/getCarByCarVin", getCarByCarVin);
-CarTestRouter.put("/updatehybridtest", updateHybridTestById);
+CarTestRouter.get("/getcarbyno", getCarByCarNo);
+CarTestRouter.get("/getCarByCarVin", getCarByCarVin);
+CarTestRouter.put("/updatehybridtestbyid", updateHybridTestById);
 CarTestRouter.put("/updatebodytestbyid", updatebodyTestById);
 CarTestRouter.post("/getCarByOrderNo", getCarByOrderNo);
 CarTestRouter.get("/getAllTest", getAllTest);
