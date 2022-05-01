@@ -26,6 +26,7 @@ const BodyTest = () => {
   const [test_price, setTest_price] = useState("");
   const [car_notes, setCar_notes] = useState("");
   const [dateNow, setDateNow] = useState("");
+  const [test_date, setTest_date] = useState("");
 
   // ===============================================  Car Body Test Function
 
@@ -49,6 +50,7 @@ const BodyTest = () => {
         note: note,
         test_price: test_price,
         car_notes: car_notes,
+        test_date: test_date,
       });
       if (res.data.success) {
         Swal.fire({
@@ -105,11 +107,12 @@ const BodyTest = () => {
       today.getDate();
     var dateNowVar = date;
     setDateNow(dateNowVar);
+    setTest_date(dateNowVar);
   };
 
   useEffect(() => {
     date();
-  }, [dateNow]);
+  });
 
   //======================================================//Return
   return (

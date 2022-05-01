@@ -25,6 +25,8 @@ const HybridTest = () => {
   const [note, setNote] = useState("");
   const [test_price, setTest_price] = useState("");
   const [car_notes, setCar_notes] = useState("");
+  const [dateNow, setDateNow] = useState("");
+  const [test_date, setTest_date] = useState("");
 
   const hybridCarTest = async (e) => {
     console.log("itsworking");
@@ -47,6 +49,7 @@ const HybridTest = () => {
         note: note,
         test_price: test_price,
         car_notes: car_notes,
+        test_date: test_date,
       });
       if (res.data.success) {
         Swal.fire({
@@ -91,9 +94,28 @@ const HybridTest = () => {
       });
     }
   };
+
+  const date = () => {
+    var today = new Date();
+    var date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+    var dateNowVar = date;
+    setTest_date(dateNowVar);
+    setDateNow(dateNowVar);
+  };
+
+  useEffect(() => {
+    date();
+  });
   //======================================================//Return
   return (
     <div className="hybridTestMainDiv">
+      <div>{dateNow}</div>
+
       <form className="hybridTestForm" onSubmit={hybridCarTest}>
         <div>
           <input

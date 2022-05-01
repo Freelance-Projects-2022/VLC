@@ -8,31 +8,73 @@ import Swal from "sweetalert2";
 
 //====================================================//Create history Function
 const History = () => {
+  const [car_order_no, setCar_order_no] = useState("");
+  const [allCarTest, setAllCarTest] = useState("");
+
   //====================================================//get car depend on order no
 
-  const getCarDependOnOrderNo = async () => {
-    console.log("btata");
+  const getCarByOnOrderNo = async (e) => {
+    e.preventDefault();
     try {
-      const res = await axios.get(
-        "http://localhost:5000/cartest/getCarByOrderNo"
+      const res = await axios.post(
+        "http://localhost:5000/cartest/getCarByOrderNo",
+        {
+          car_order_no: car_order_no,
+        }
       );
       if (res.data.success) {
-        console.log(
-          "🚀 ~ file: History.js ~ line 19 ~ getCarDependOnOrderNo ~ res.data.results",
-          res.data.results
-        );
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: res.data.message,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        console.log(res.data.result);
+        setAllCarTest(res.data.result);
       } else throw Error;
     } catch (error) {
-      if (!error.response.data.success) {
-        // return setMessage(error.response.data.message);
+      if (error.response && error.response.data) {
+        Swal.fire({
+          position: "center",
+          icon: "warning",
+          title: error.response.data.message,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        return;
       }
-      // setMessage("Error happened while Get Data, please try again");
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "Error happened while Login, please try again",
+        showConfirmButton: false,
+        timer: 2000,
+      });
     }
   };
   //======================================================//Return
   return (
     <div className="MainLoginDev">
-      <button onClick={getCarDependOnOrderNo}>get data</button>
+      <form className="getCarByOnOrderNo" onSubmit={getCarByOnOrderNo}>
+        <div>
+          <input
+            required
+            className="car_order_no"
+            type="text"
+            value={car_order_no}
+            onChange={(e) => {
+              setCar_order_no(e.target.value);
+            }}
+          />
+          <label className="">رقم الفاتورة</label>
+        </div>
+        <div>
+          <button type="submit" className="bill_no_btn">
+            أبحث
+          </button>
+        </div>
+      </form>
     </div>
   );
 };

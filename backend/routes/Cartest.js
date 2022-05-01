@@ -12,6 +12,7 @@ const {
   updatebodyTestById,
   deletehybridcar,
   getCarByOrderNo,
+  getAllTest,
   // getCarByCarNo,
   // getCarByCarVin,
 } = require("../controllers/Cartest");
@@ -30,7 +31,8 @@ CarTestRouter.delete("/deletehybridtest", deletehybridcar);
 // CarTestRouter.get("/getCarByCarVin", getCarByCarVin);
 CarTestRouter.put("/updatehybridtest", updateHybridTestById);
 CarTestRouter.put("/updatebodytestbyid", updatebodyTestById);
-CarTestRouter.get("/getCarByOrderNo", getCarByOrderNo);
+CarTestRouter.post("/getCarByOrderNo", getCarByOrderNo);
+CarTestRouter.get("/getAllTest", getAllTest);
 
 //====================================================// module.exports
 
