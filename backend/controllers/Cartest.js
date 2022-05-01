@@ -323,29 +323,34 @@ const getCarByOrderNo = (req, res) => {
   connection.query(query, data, (err, result) => {
     try {
       if (result.length != 0) {
-        resultObj.bodyTest = result[0];
-      } else {
-        const data = [car_order_no];
-        const query =
-          "select * from body_test where car_order_no=? And is_deleted =0";
-
-        connection.query(query, data, (err, result) => {
-          if (result.length != 0) {
-            resultObj.hybridTest = result[0];
-
-            return res.status(200).json({
-              success: true,
-              massage: `تمت عملية البحث بنجاح`,
-              result: resultObj,
-            });
-          } else {
-            return res.status(404).json({
-              success: false,
-              massage: "لا يوجد فحص متوفر ",
-            });
-          }
-        });
+        resultObj.hybrid_test = result[0];
       }
+      const data = [car_order_no];
+      const query =
+        "select * from body_test where car_order_no=? And is_deleted =0";
+
+      connection.query(query, data, (err, result) => {
+        if (result.length != 0) {
+          resultObj.body_test = result[0];
+          return res.status(200).json({
+            success: true,
+            massage: `تمت عملية البحث بنجاح`,
+            result: resultObj,
+          });
+        }
+        if (resultObj.hybrid_test || resultObj.body_test) {
+          return res.status(200).json({
+            success: true,
+            massage: `تمت عملية البحث بنجاح`,
+            result: resultObj,
+          });
+        } else {
+          return res.status(404).json({
+            success: false,
+            massage: "لا يوجد فحص متوفر ",
+          });
+        }
+      });
     } catch {
       res.status(500).json({
         success: false,
