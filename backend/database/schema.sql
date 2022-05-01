@@ -67,6 +67,7 @@ CREATE TABLE body_Test(
      test_price decimal,
     car_order_no VARCHAR(255),
     car_notes VARCHAR(255),
+    test_date VARCHAR(255),
     is_deleted TINYINT Default 0
 );
 
@@ -90,6 +91,7 @@ CREATE TABLE hybrid_Test(
     test_price decimal,
     car_order_no VARCHAR(255),
     car_notes VARCHAR(255),
+    test_date VARCHAR(255),
     is_deleted TINYINT Default 0
 );
 
