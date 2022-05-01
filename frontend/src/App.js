@@ -7,6 +7,7 @@ import Navigation from "./Components/Navigation/navigation";
 import BodyCarTest from "./Components/CarTestPage/BodyTestPage/BodyTest";
 import HybridCarTest from "./Components/CarTestPage/HybridTestPage/HybridTest";
 import History from "./Components/History/History";
+import Accounting from "./Components/Accounting/Accounting";
 function App() {
   return (
     <div className="App">
@@ -17,6 +18,7 @@ function App() {
         <Route path="/BodyTest" element={<BodyCarTest />} />
         <Route path="/HybridTest" element={<HybridCarTest />} />
         <Route path="/History" element={<History />} />
+        <Route path="/Accounting" element={<Accounting />} />
       </Routes>
     </div>
   );
