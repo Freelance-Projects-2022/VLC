@@ -11,7 +11,7 @@ import axios from "axios";
 // import { FiSettings } from "react-icons/fi";
 
 // CSS File
-// import "./navigation.css";
+import "./navigation.css";
 
 //====================================================// Navigation function
 const Navigation = () => {
@@ -44,6 +44,11 @@ const Navigation = () => {
       <div>
         <Link to="/history" alt="test">
           السجلات{" "}
+        </Link>
+      </div>
+      <div>
+        <Link to="/accounting" alt="test">
+          المحاسبة
         </Link>
       </div>
     </div>
