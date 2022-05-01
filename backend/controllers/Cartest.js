@@ -186,94 +186,102 @@ const getBodyTest = (req, res) => {
 };
 
 //====================================================//get car depend on car_no
-// const getCarByCarNo = (req, res) => {
-//   const carNo = req.body.carNo;
-//   const data = [carNo];
-//   const query = " SELECT *  FROM order_test where car_no=? And is_deleted =0";
-//   connection.query(query, data, (err, result) => {
-//     try {
-//       if (result.length === 0) {
-//         return res.status(404).json({
-//           success: false,
-//           massage: `${carNo} لا يوجد فحص لرقم السيارة `,
-//           err: err,
-//         });
-//         // result are the data returned by mysql server
-//       } else {
-//         const carId = result[0].id;
-//         const data = [carId, carId, carId];
-//         const query =
-//           "select * from hybrid_Test hc join body_Test pc on hc.id=? and pc.id=? join order_test ot on ot.id=?";
-//         connection.query(query, data, (err, result) => {
-//           if (err) {
-//             return res.status(500).json({
-//               success: false,
-//               massage: "Server Error",
-//               err: err,
-//             });
-//           } else {
-//             return res.status(200).json({
-//               success: true,
-//               massage: `No Car Test Found For This Car No.`,
-//               result: result,
-//             });
-//           }
-//         });
-//       }
-//     } catch {
-//       res.status(500).json({
-//         success: false,
-//         massage: "server error",
-//         err: err,
-//       });
-//     }
-//   });
-// };
+const getCarByCarNo = (req, res) => {
+  let result = [];
+  const carNo = req.body.carNo;
+  const data = [carNo];
+  const query = " SELECT *  FROM body_test where car_no=? And is_deleted =0";
+  connection.query(query, data, (err, bodyResult) => {
+    try {
+      if (err) {
+        return res.status(500).json({
+          success: false,
+          massage: "server error",
+          err: err,
+        });
+      }
+      const data = [carNo];
+      const query =
+        "select * from hybrid_test where car_no=? And is_deleted =0";
+      connection.query(query, data, (err, hybridResult) => {
+        if (err) {
+          return res.status(500).json({
+            success: false,
+            massage: "Server Error",
+            err: err,
+          });
+        }
+        result = bodyResult.concat(hybridResult);
+        if (result.length === 0) {
+          return res.status(404).json({
+            success: false,
+            message: `لا يوجد فحص متوفر لرقم السيارة ${carNo}`,
+          });
+        }
+        return res.status(200).json({
+          success: true,
+          massage: `تم إيجاد الفحص لسيارة رقم ${carNo}`,
+          result: result,
+        });
+      });
+    } catch {
+      res.status(500).json({
+        success: false,
+        massage: "server error",
+        err: err,
+      });
+    }
+  });
+};
 
 // //====================================================//get car depend on vin
-// const getCarByCarVin = (req, res) => {
-//   const carVin = req.body.car_vin;
-//   const data = [carVin];
-//   const query = " SELECT *  FROM order_test where car_vin=? And is_deleted =0";
-//   connection.query(query, data, (err, result) => {
-//     try {
-//       if (result.length === 0) {
-//         return res.status(404).json({
-//           success: false,
-//           massage: "No Car Test Found For This Car Vin",
-//           err: err,
-//         });
-//         // result are the data returned by mysql server
-//       } else {
-//         const carId = result[0].id;
-//         const data = [carId, carId, carId];
-//         const query =
-//           "select * from hybrid_Test hc join Body_Test pc on hc.id=? and pc.id=? join order_test ot on ot.id=?";
-//         connection.query(query, data, (err, result) => {
-//           if (err) {
-//             return res.status(500).json({
-//               success: false,
-//               massage: "Server Error",
-//               err: err,
-//             });
-//           } else {
-//             return res.status(200).json({
-//               success: true,
-//               massage: `No Car Test Found For This Car Vin`,
-//               result: result,
-//             });
-//           }
-//         });
-//       }
-//     } catch {
-//       res.status(500).json({
-//         success: false,
-//         massage: "server error",
-//         err: err,
-//       });
-//     }
-//   });
-// };
+const getCarByCarVin = (req, res) => {
+  let result = [];
+  const car_vin = req.body.car_vin;
+  const data = [car_vin];
+  const query = " SELECT *  FROM body_test where car_vin=? And is_deleted =0";
+  connection.query(query, data, (err, bodyResult) => {
+    try {
+      if (err) {
+        return res.status(500).json({
+          success: false,
+          massage: "server error",
+          err: err,
+        });
+      }
+      const data = [car_vin];
+      const query =
+        "select * from hybrid_test where car_vin=? And is_deleted =0";
+      connection.query(query, data, (err, hybridResult) => {
+        if (err) {
+          return res.status(500).json({
+            success: false,
+            massage: "Server Error",
+            err: err,
+          });
+        }
+        result = bodyResult.concat(hybridResult);
+        if (result.length === 0) {
+          return res.status(404).json({
+            success: false,
+            message: `لا يوجد فحص متوفر لرقم السيارة ${car_vin}`,
+          });
+        }
+        return res.status(200).json({
+          success: true,
+          massage: `تم إيجاد الفحص لسيارة رقم ${car_vin}`,
+          result: result,
+        });
+      });
+    } catch {
+      res.status(500).json({
+        success: false,
+        massage: "server error",
+        err: err,
+      });
+    }
+  });
+};
 
 //====================================================//get car depend on order no
 const getCarByOrderNo = (req, res) => {
@@ -339,7 +347,6 @@ const getAllTest = (req, res) => {
         });
       }
       let result = hybridResult.concat(BodyResult);
-
       if (result.length === 0) {
         return res.status(500).json({
           success: false,
@@ -430,11 +437,11 @@ const deletehybridcar = (req, res) => {
     });
   });
 };
-//====================================================//update hybrid car By Id Function
 
+//====================================================//update hybrid car By Id Function
 const updateHybridTestById = async (req, res) => {
+  const id = req.query.id;
   const {
-    id,
     car_no,
     car_brand,
     car_vin,
@@ -449,6 +456,9 @@ const updateHybridTestById = async (req, res) => {
     emc,
     soh,
     note,
+    test_price,
+    car_notes,
+    test_date,
   } = req.body;
   const data = [
     car_no,
@@ -465,9 +475,13 @@ const updateHybridTestById = async (req, res) => {
     emc,
     soh,
     note,
+    test_price,
+    car_notes,
+    test_date,
     id,
   ];
-  const query = `UPDATE hybrid_Test SET    car_no=?,car_brand=?,car_vin=?, engine_test=?,transmission=?,srs=?,abs_system=?,ac=?,hybrid_system=?,hv_battery=?,eleectric_system=?,emc=?,soh=?,note=? WHERE id= ?`;
+
+  const query = `UPDATE hybrid_Test SET   car_no=?,car_brand=?,car_vin=?, engine_test=?,transmission=?,srs=?,abs_system=?,ac=?,hybrid_system=?,hv_battery=?,eleectric_system=?,emc=?,soh=?,note=?,  test_price=?, car_notes=?,  test_date=? WHERE id= ?`;
   connection.query(query, data, (err, result) => {
     if (result.affectedRows === 0) {
       return res.status(500).json({
@@ -495,6 +509,7 @@ const updateHybridTestById = async (req, res) => {
 //====================================================//update bodyTest  By Id Function
 
 const updatebodyTestById = async (req, res) => {
+  const id = req.query.id;
   const {
     car_no,
     car_brand,
@@ -509,7 +524,9 @@ const updatebodyTestById = async (req, res) => {
     engine_test,
     gear_test,
     back_acss,
-    id,
+    test_price,
+    car_notes,
+    test_date,
   } = req.body;
   const data = [
     car_no,
@@ -525,9 +542,12 @@ const updatebodyTestById = async (req, res) => {
     engine_test,
     gear_test,
     back_acss,
+    test_price,
+    car_notes,
+    test_date,
     id,
   ];
-  const query = `UPDATE body_Test SET  car_no=?,car_brand=?,car_vin=?,car_color=?,car_model=?, vin_tr=?,vin_tl=?,vin_br=?,vin_bl=?,body_note=?,engine_test=?,gear_test=?,back_acss=? WHERE id= ?`;
+  const query = `UPDATE body_Test SET  car_no=?,car_brand=?,car_vin=?,car_color=?,car_model=?, vin_tr=?,vin_tl=?,vin_br=?,vin_bl=?,body_note=?,engine_test=?,gear_test=?,back_acss=?, test_price=?,  car_notes=?,  test_date=? WHERE id= ?`;
   connection.query(query, data, (err, result) => {
     if (result.affectedRows === 0) {
       return res.status(500).json({
@@ -564,6 +584,6 @@ module.exports = {
   deletehybridcar,
   getCarByOrderNo,
   getAllTest,
-  // getCarByCarNo,
-  // getCarByCarVin,
+  getCarByCarNo,
+  getCarByCarVin,
 };
