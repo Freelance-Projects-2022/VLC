@@ -22,48 +22,6 @@ const bodyTest = (req, res) => {
     car_notes,
     test_date,
   } = req.body;
-  console.log(
-    "🚀 ~ file: Cartest.js ~ line 23 ~ bodyTest ~ car_notes",
-    car_notes
-  );
-  console.log(
-    "🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ test_price",
-    test_price
-  );
-  console.log(
-    "🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ back_acss",
-    back_acss
-  );
-  console.log(
-    "🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ gear_test",
-    gear_test
-  );
-  console.log(
-    "🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ engine_test",
-    engine_test
-  );
-  console.log(
-    "🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ body_note",
-    body_note
-  );
-  console.log("🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ vin_bl", vin_bl);
-  console.log("🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ vin_br", vin_br);
-  console.log("🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ vin_tl", vin_tl);
-  console.log("🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ vin_tr", vin_tr);
-  console.log(
-    "🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ car_model",
-    car_model
-  );
-  console.log(
-    "🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ car_color",
-    car_color
-  );
-  console.log("🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ car_vin", car_vin);
-  console.log(
-    "🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ car_brand",
-    car_brand
-  );
-  console.log("🚀 ~ file: Cartest.js ~ line 24 ~ bodyTest ~ car_no", car_no);
 
   const car_order_no = uuid().slice(0, 6);
 
@@ -322,6 +280,7 @@ const getCarByOrderNo = (req, res) => {
   let resultObj = {};
   const car_order_no = req.body.car_order_no;
   const data = [car_order_no];
+
   const query =
     " SELECT *  FROM hybrid_test where car_order_no=? And is_deleted =0";
   connection.query(query, data, (err, result) => {
@@ -338,20 +297,20 @@ const getCarByOrderNo = (req, res) => {
           resultObj.body_test = result[0];
           return res.status(200).json({
             success: true,
-            massage: `تمت عملية البحث بنجاح`,
+            message: `تم إيجاد فحص لرقم الفاتورة ${car_order_no}`,
             result: resultObj,
           });
         }
         if (resultObj.hybrid_test || resultObj.body_test) {
           return res.status(200).json({
             success: true,
-            massage: `تمت عملية البحث بنجاح`,
+            message: `تم إيجاد فحص لرقم الفاتورة لا يوجد فحص متوفر لرقم الفاتورة ${car_order_no}`,
             result: resultObj,
           });
         } else {
           return res.status(404).json({
             success: false,
-            massage: "لا يوجد فحص متوفر ",
+            message: `لا يوجد فحص متوفر لرقم الفاتورة ${car_order_no}`,
           });
         }
       });
@@ -362,6 +321,46 @@ const getCarByOrderNo = (req, res) => {
         err: err,
       });
     }
+  });
+};
+//====================================================//get all  test  where is_deleted =0
+const getAllTest = (req, res) => {
+  const query = "SELECT * FROM vlc.hybrid_Test where is_deleted=0;;";
+  connection.query(query, (err, hybridResult) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        massage: "server error",
+        err: err,
+      });
+    }
+
+    const query = "SELECT *  FROM vlc.Body_Test where is_deleted =0;";
+    connection.query(query, (err, BodyResult) => {
+      if (err) {
+        return res.status(500).json({
+          success: false,
+          massage: "server error",
+          err: err,
+        });
+      }
+      let result = hybridResult.concat(BodyResult);
+
+      if (result.length === 0) {
+        return res.status(500).json({
+          success: false,
+          massage: "لا يوجد أي نتائج",
+          err: err,
+        });
+      } else {
+        // result are the data returned by mysql server
+        return res.status(200).json({
+          success: true,
+          massage: "جميع أفحصة البودي",
+          results: result,
+        });
+      }
+    });
   });
 };
 
@@ -570,6 +569,7 @@ module.exports = {
   updatebodyTestById,
   deletehybridcar,
   getCarByOrderNo,
+  getAllTest,
   // getCarByCarNo,
   // getCarByCarVin,
 };
