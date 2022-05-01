@@ -20,6 +20,7 @@ const bodyTest = (req, res) => {
     back_acss,
     test_price,
     car_notes,
+    test_date,
   } = req.body;
   console.log(
     "🚀 ~ file: Cartest.js ~ line 23 ~ bodyTest ~ car_notes",
@@ -67,7 +68,7 @@ const bodyTest = (req, res) => {
   const car_order_no = uuid().slice(0, 6);
 
   const query =
-    "INSERT INTO body_Test (car_no,car_brand,car_vin,car_color,car_model,vin_tr,vin_tl,vin_br,vin_bl,body_note,engine_test,gear_test,back_acss,test_price,car_notes,car_order_no) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    "INSERT INTO body_Test (car_no,car_brand,car_vin,car_color,car_model,vin_tr,vin_tl,vin_br,vin_bl,body_note,engine_test,gear_test,back_acss,test_price,car_notes,car_order_no,test_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
   const data = [
     car_no,
     car_brand,
@@ -85,6 +86,7 @@ const bodyTest = (req, res) => {
     test_price,
     car_notes,
     car_order_no,
+    test_date,
   ];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -120,10 +122,11 @@ const HybridTest = (req, res) => {
     note,
     test_price,
     car_notes,
+    test_date,
   } = req.body;
   const car_order_no = uuid().slice(0, 6);
   const query =
-    "INSERT INTO hybrid_Test (car_no, car_brand,car_vin, engine_test,transmission,srs,abs_system,ac,hybrid_system,hv_battery,eleectric_system,emc,soh,note,test_price,car_notes,car_order_no) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    "INSERT INTO hybrid_Test (car_no, car_brand,car_vin, engine_test,transmission,srs,abs_system,ac,hybrid_system,hv_battery,eleectric_system,emc,soh,note,test_price,car_notes,car_order_no,test_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
   const data = [
     car_no,
     car_brand,
@@ -142,6 +145,7 @@ const HybridTest = (req, res) => {
     test_price,
     car_notes,
     car_order_no,
+    test_date,
   ];
   connection.query(query, data, (err, result) => {
     if (err) {

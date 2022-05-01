@@ -25,6 +25,7 @@ const BodyTest = () => {
   const [note, setNote] = useState("");
   const [test_price, setTest_price] = useState("");
   const [car_notes, setCar_notes] = useState("");
+  const [dateNow, setDateNow] = useState("");
 
   // ===============================================  Car Body Test Function
 
@@ -94,9 +95,26 @@ const BodyTest = () => {
     }
   };
 
+  const date = () => {
+    var today = new Date();
+    var date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+    var dateNowVar = date;
+    setDateNow(dateNowVar);
+  };
+
+  useEffect(() => {
+    date();
+  }, [dateNow]);
+
   //======================================================//Return
   return (
     <div className="bodyTestMainDiv">
+      <div>{dateNow}</div>
       <form className="bodyTestForm" onSubmit={carBodyTest}>
         <div>
           <input
