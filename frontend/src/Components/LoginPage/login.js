@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { Grid, Row, Col, Form } from "react-bootstrap";
+import {Form,Button} from "react-bootstrap";
 
 // CSS File
 import "./login.css";
@@ -56,27 +56,32 @@ const Login = () => {
 
   //   //======================================================//Return
   return (
-    <div className="MainLoginDev">
-      <form onSubmit={checkUser} className="loginForm">
-        <input
-          type="text"
-          placeholder="أسم المستخدم"
+   <div className="MainLoginDev">
+      <Form onSubmit={checkUser} className="loginForm">
+  <Form.Group className="mb-3" controlId="formBasicEmail">
+    <Form.Label>اسم المستخدم</Form.Label>
+    <Form.Control type="text"  placeholder="أسم المستخدم"
           onChange={(e) => {
             setUsername(e.target.value);
-          }}
-        />
-        <input
-          type="password"
-          placeholder="كلمة السر"
+          }} />
+    
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Label>Password</Form.Label>
+    <Form.Control type="password" placeholder="كلمة السر"
           onChange={(e) => {
             setPassword(e.target.value);
-          }}
-        />
-        <button type="submit" className="submitButton">
-          تسجيل الدخول
-        </button>
-      </form>
+          }} />
+  </Form.Group>
+  
+  <Button variant="primary" type="submit">
+  تسجيل الدخول{" "}
+  </Button>
+</Form>
+     
     </div>
+
   );
 };
 
