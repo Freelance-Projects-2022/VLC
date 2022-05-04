@@ -67,7 +67,7 @@ const History = () => {
               setCar_order_no(e.target.value);
             }}
           />
-          <label className="">رقم الفاتورة</label>
+          <label className=""> في الهايبرد رقم الفاتورة</label>
         </div>
         <div>
           <button type="submit" className="bill_no_btn">
