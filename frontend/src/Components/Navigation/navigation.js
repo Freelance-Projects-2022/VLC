@@ -15,7 +15,6 @@ import "./navigation.css";
 
 //====================================================// Navigation function
 const Navigation = () => {
-  const [doctorName, setDoctorName] = useState("");
   const history = useNavigate();
 
   //====================================================// return

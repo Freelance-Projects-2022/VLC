@@ -1,9 +1,10 @@
-//====================================================//Require
+// //====================================================//Require
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import {Form,Button} from "react-bootstrap";
+
 // CSS File
 import "./login.css";
 
@@ -53,9 +54,9 @@ const Login = () => {
     }
   };
 
-  //======================================================//Return
+  //   //======================================================//Return
   return (
-    <div className="MainLoginDev">
+   <div className="MainLoginDev">
       <Form onSubmit={checkUser} className="loginForm">
   <Form.Group className="mb-3" controlId="formBasicEmail">
     <Form.Label>اسم المستخدم</Form.Label>
@@ -80,6 +81,7 @@ const Login = () => {
 </Form>
      
     </div>
+
   );
 };
 
