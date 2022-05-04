@@ -1,7 +1,5 @@
 #projects{
-    padding: 30px 0px 30px 150px;
-    margin-bottom: 100px;
-
+    
 }
 .Projects_List_Tabs{
     display:flex;
@@ -13,8 +11,7 @@
 .Projects_Section_Title{
     font-size: 32px;
   color: #556d91;
-  margin-top: 10px;
-  margin-bottom: 30px;
+  
 
   font-weight: 700;
   text-transform: capitalize;
@@ -30,21 +27,21 @@
     
 }
 .Projects_Content_Tab{
-   display:flex;
-   flex-direction:row;
-   flex-wrap: wrap;
-   gap:50px;
-   justify-content: center;
-   align-items: center;
+   /* display:flex; */
+   /* flex-direction:row; */
+   /* flex-wrap: wrap; */
+   /* gap:50px; */
+   /* justify-content: center; */
+   /* align-items: center; */
    /* opacity:.5; */
    /* transition: visibility 1s;
    transition:opacity 0.5s linear; */
 }
 .Single_project{
-    min-width:350px;
+    /* min-width:350px;
     min-height:250px;
     max-width:350px;
-    max-height:250px;
+    max-height:250px; */
 }
 .Up_single_project{
     display:flex;
@@ -54,21 +51,19 @@
 .description_project{
     background-color: rgba(0, 0, 0, 0.521);
     color: white;
-    min-width:350px;
+    /* min-width:350px;
     min-height:250px;
     max-width:350px;
-    max-height:250px;
+    max-height:250px; */
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items:flex-start;
 }
 .description_project_title{
-    margin-left:20px;
 
 }
 .description_project_paragraph{
-    margin-left:20px;
 
 }
 .ReactTwo{

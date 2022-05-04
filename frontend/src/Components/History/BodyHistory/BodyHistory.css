@@ -1,0 +1,6 @@
+.linkTestPage{
+    cursor:pointer;
+}
+.linkTestPage:hover{
+text-decoration:underline;
+}
