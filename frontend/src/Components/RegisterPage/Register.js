@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Button, Form } from "react-bootstrap";
 
 // CSS File
 // import "./Register.css";
@@ -62,19 +63,18 @@ const Register = () => {
   };
   return (
     <div className="registerMainDiv">
-      <form className="patientRegisterForm" onSubmit={RegisterUser}>
-        <select
-          onChange={(e) => {
-            setRole_id(e.target.value);
-          }}
-          className="userRole"
-          required
-        >
-          <option value="2">موظف</option>
+        <Form onSubmit={RegisterUser} className="loginForm">
+        <Form.Select aria-label="Default select example" className="userRole" required onChange={(e) => {
+          
+          setRole_id(e.target.value);  
+          }}>
+  <option>اختر الصلاحية</option>
+  <option value="2">موظف</option>
           <option value="1">مدير</option>
-        </select>
-        <input
-          required
+</Form.Select>
+  <Form.Group className="mb-3" controlId="formBasicEmail">
+    <Form.Label>اسم المستخدم</Form.Label>
+    <Form.Control required
           placeholder="أسم المستخدم"
           className="userNameField"
           type="text"
@@ -82,10 +82,13 @@ const Register = () => {
           value={username}
           onChange={(e) => {
             setUsername(e.target.value);
-          }}
-        />
-        <input
-          placeholder="رقم الهاتف"
+          }} />
+    
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Label>رقم الهاتف</Form.Label>
+    <Form.Control placeholder="رقم الهاتف"
           required
           className="phoneField"
           type="text"
@@ -93,10 +96,11 @@ const Register = () => {
           minLength={10}
           onChange={(e) => {
             setPhone(e.target.value);
-          }}
-        />
-        <input
-          placeholder="كلمة السر"
+          }}/>
+  </Form.Group>
+  <Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Label>كلمة السر</Form.Label>
+    <Form.Control placeholder="كلمة السر"
           required
           className="passwordField"
           type="password"
@@ -104,10 +108,11 @@ const Register = () => {
           minLength={6}
           onChange={(e) => {
             setPasssword(e.target.value);
-          }}
-        />
-        <input
-          placeholder="إعادة كلمة السر"
+          }}/>
+  </Form.Group>
+  <Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Label>إعادة كلمة السر</Form.Label>
+    <Form.Control  placeholder="إعادة كلمة السر"
           required
           value={rePassword}
           minLength={6}
@@ -115,13 +120,13 @@ const Register = () => {
           type="password"
           onChange={(e) => {
             setRePassword(e.target.value);
-          }}
-        />
-
-        <button type="submit" className="submit_Button_Register">
-          تسجيل
-        </button>
-      </form>
+          }}/>
+  </Form.Group>
+  <Button variant="primary" type="submit">
+  تسجيل
+  </Button>
+</Form>
+      
     </div>
   );
 };

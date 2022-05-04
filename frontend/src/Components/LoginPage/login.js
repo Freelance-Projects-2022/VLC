@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-
+import {Form,Button} from "react-bootstrap";
 // CSS File
 import "./login.css";
 
@@ -56,62 +56,29 @@ const Login = () => {
   //======================================================//Return
   return (
     <div className="MainLoginDev">
-      <form onSubmit={checkUser} className="loginForm">
-        <input
-          type="text"
-          placeholder="أسم المستخدم"
+      <Form onSubmit={checkUser} className="loginForm">
+  <Form.Group className="mb-3" controlId="formBasicEmail">
+    <Form.Label>اسم المستخدم</Form.Label>
+    <Form.Control type="text"  placeholder="أسم المستخدم"
           onChange={(e) => {
             setUsername(e.target.value);
-          }}
-        />
-        <input
-          type="password"
-          placeholder="كلمة السر"
+          }} />
+    
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Label>Password</Form.Label>
+    <Form.Control type="password" placeholder="كلمة السر"
           onChange={(e) => {
             setPassword(e.target.value);
-          }}
-        />
-        <button type="submit" className="submitButton">
-          تسجيل الدخول{" "}
-        </button>
-      </form>
-
-      {/* <div className="loginPageImage">
-        <img src="https://s10.gifyu.com/images/Health-professional-team4e6b844e89762775.gif" />
-      </div>
-      <div className="loginDiv">
-        <form onSubmit={checkUser} className="loginForm">
-          <div className="loginInputDiv">
-            <input
-              type="number"
-              className="loginInput"
-              placeholder="Mobile Number"
-              required
-              onChange={(e) => {
-                setPhone(e.target.value);
-              }}
-            />
-            <div className="loginPageicon"></div>
-          </div>
-          <div>
-            <input
-              type="password"
-              className="loginInput"
-              placeholder="Password"
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-          </div>
-          <div className="loginButtonDiv">
-            <button className="loginButton"> Log in </button>
-          </div>
-          <div>
-            <p className="or">------------------ OR ------------------</p>
-          </div>
-          <div className="googleLogin"></div>
-        </form>
-      </div> */}
+          }} />
+  </Form.Group>
+  
+  <Button variant="primary" type="submit">
+  تسجيل الدخول{" "}
+  </Button>
+</Form>
+     
     </div>
   );
 };
