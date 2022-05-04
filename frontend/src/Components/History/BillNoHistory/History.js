@@ -31,7 +31,6 @@ const History = () => {
           showConfirmButton: false,
           timer: 2000,
         });
-        console.log(res.data.result);
         setAllCarTest(res.data.result);
       } else throw Error;
     } catch (error) {
@@ -57,7 +56,6 @@ const History = () => {
   //======================================================//Return
   return (
     <div className="MainLoginDev">
-      
       <form className="getCarByOnOrderNo" onSubmit={getCarByOnOrderNo}>
         <div>
           <input
