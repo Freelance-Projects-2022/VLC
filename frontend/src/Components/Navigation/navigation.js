@@ -14,11 +14,22 @@ import axios from "axios";
 import "./navigation.css";
 
 //====================================================// Navigation function
-const Navigation = ({ isLogin }) => {
-  const history = useNavigate();
+const Navigation = ({
+  isLogin,
+  isAdmin,
+  setIsLogin,
+  isLogout,
+  setIslogout,
+  setIsAdmin,
+}) => {
+  const Route = useNavigate();
 
+  const logout = () => {
+    setIsLogin(false);
+    setIslogout(true);
+    setIsAdmin(false);
+  };
   //====================================================// return
-
   return (
     <div className="navigationMainDiv">
       {isLogin ? (
@@ -30,9 +41,13 @@ const Navigation = ({ isLogin }) => {
       )}
 
       <div>
-        <Link to="/register" alt="test">
-          تسجيل حساب جديد
-        </Link>
+        {isAdmin ? (
+          <Link to="/register" alt="test">
+            تسجيل حساب جديد
+          </Link>
+        ) : (
+          <></>
+        )}
       </div>
       <div>
         <Link to="/bodyTest" alt="test">
@@ -53,6 +68,21 @@ const Navigation = ({ isLogin }) => {
         <Link to="/accounting" alt="test">
           المحاسبة
         </Link>
+      </div>
+      <div>
+        {isLogout ? (
+          <></>
+        ) : (
+          <Link
+            to="/"
+            alt="test"
+            onClick={() => {
+              logout();
+            }}
+          >
+            تسجيل الخروج
+          </Link>
+        )}
       </div>
     </div>
   );

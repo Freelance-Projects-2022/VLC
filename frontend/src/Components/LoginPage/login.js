@@ -9,7 +9,7 @@ import { Form, Button } from "react-bootstrap";
 import "./login.css";
 
 //====================================================//Create Login Function
-const Login = ({ setIsLogin }) => {
+const Login = ({ setIsLogin, setIslogout, setIsAdmin }) => {
   const Route = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -56,7 +56,13 @@ const Login = ({ setIsLogin }) => {
             showConfirmButton: false,
             timer: 2000,
           });
+          console.log(res.data.userId[0].role_id);
+          if (res.data.userId[0].role_id === 1) {
+            console.log("from inside");
+            setIsAdmin(true);
+          }
           setIsLogin(true);
+          setIslogout(false);
           Route("/bodyTest");
         } else throw Error;
       } catch (error) {
