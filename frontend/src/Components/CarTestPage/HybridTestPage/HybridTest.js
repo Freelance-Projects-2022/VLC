@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 
 // CSS File
 import "./HybridTest.css";
+import { Button,Table } from "react-bootstrap";
 
 //====================================================//Body Car Test  Function
 const HybridTest = () => {
@@ -114,11 +115,41 @@ const HybridTest = () => {
   //======================================================//Return
   return (
     <div className="hybridTestMainDiv">
-      <div>{dateNow}</div>
-
       <form className="hybridTestForm" onSubmit={hybridCarTest}>
-        <div>
-          <input
+      <div><span>Date : </span>{dateNow}
+      
+      </div>
+      
+      <div className="OrderTable">
+        
+        <Table bordered hover>
+          <tbody>
+            <tr>
+            <td>
+                <input
+            placeholder="انقر للكتابة"
+
+                  required
+                  className="car_vin"
+            
+
+                  type="text"
+                  value={car_vin}
+                  onChange={(e) => {
+                    setCar_vin(e.target.value);
+                  }}
+                />
+              </td>
+              <th>Car Vin</th>
+              
+            </tr>
+            <tr>
+              
+
+              <td>
+              <input
+            placeholder="انقر للكتابة"
+
             required
             className="car_no"
             type="text"
@@ -127,22 +158,14 @@ const HybridTest = () => {
               setCar_no(e.target.value);
             }}
           />
-          <label className="">Car No.</label>
-        </div>{" "}
-        <div>
-          <input
-            required
-            className="car_brand"
-            type="text"
-            value={car_brand}
-            onChange={(e) => {
-              setCar_brand(e.target.value);
-            }}
-          />
-          <label className="">Car Brand</label>
-        </div>{" "}
-        <div>
-          <input
+              </td>
+              <th>Car No</th>
+            </tr>
+            <tr>
+              <td>
+              <input
+            placeholder="انقر للكتابة"
+
             required
             className="car_vin"
             type="text"
@@ -151,10 +174,26 @@ const HybridTest = () => {
               setCar_vin(e.target.value);
             }}
           />
-          <label className="">engine_test</label>
-        </div>
-        <div>
-          <input
+              </td>
+              <th> Type</th>
+
+            </tr>
+          </tbody>
+        </Table>
+        
+      </div>
+      <h5 style={{ backgroundColor: "blue", color: "whitesmoke" }}>
+       Technical Inspection Report
+      </h5>
+      <div className="OrderTable">
+      <Table bordered hover>
+        <tbody>
+          <tr>
+            <td>
+              {" "}
+              <input
+            placeholder="انقر للكتابة"
+
             required
             className="engine_test"
             type="text"
@@ -163,64 +202,100 @@ const HybridTest = () => {
               setEngine_test(e.target.value);
             }}
           />
-          <label className="">engine_test</label>
-        </div>
-        <div>
-          <input
+            </td>
+            <th>Engine</th>
+
+          </tr>
+          <tr>
+
+            <td>
+            <input
+            placeholder="انقر للكتابة"
+
             required
             value={transmission}
-            placeholder=""
+            
             className="transmission"
             type="text"
             onChange={(e) => {
               setTransmission(e.target.value);
             }}
           />
-          <label className="">transmission</label>
-        </div>
-        <div>
-          <input
+            </td>
+            <th>Transmission</th>
+
+          </tr>
+          <tr>
+
+            <td>
+            <input
+            placeholder="انقر للكتابة"
+
             required
             value={srs}
-            placeholder=""
+            
             className="srs"
             type="text"
             onChange={(e) => {
               setSrs(e.target.value);
             }}
           />
-          <label className="">srs</label>
-        </div>
-        <div>
-          <input
+            </td>
+            <th>SRS</th>
+
+          </tr>
+          <tr>
+
+            <td>
+            <input
+            placeholder="انقر للكتابة"
+
             required
             value={abs_system}
-            placeholder=""
+            
             className="abs_system"
             type="text"
             onChange={(e) => {
               setAbs_system(e.target.value);
             }}
           />
-          <label className="">abs_system</label>
-        </div>
-        <div>
-          <textarea
+            </td>
+            <th>ABS</th>
+
+          </tr>
+          <tr>
+
+            <td>
+            <input
+            placeholder="انقر للكتابة"
+
             required
-            value={ac}
-            placeholder=""
-            className="ac"
+            
+            value={hybrid_system}
+            className="hybrid_system"
             type="text"
             onChange={(e) => {
               setAc(e.target.value);
             }}
           />
-          <label className="">ac</label>
-        </div>
-        <div>
-          <input
+            </td>
+            <th>A/C</th>
+
+          </tr>
+          
+        
+        </tbody>
+      </Table>
+      <Table bordered hover>
+        <tbody>
+          <tr>
+            <td>
+              {" "}
+              <input
+            placeholder="انقر للكتابة"
+
             required
-            placeholder=""
+            
             value={hybrid_system}
             className="hybrid_system"
             type="text"
@@ -228,12 +303,18 @@ const HybridTest = () => {
               setHybrid_system(e.target.value);
             }}
           />
-          <label className="">hybrid_system</label>
-        </div>
-        <div>
-          <input
+            </td>
+            <th>Hybrid System</th>
+
+          </tr>
+          <tr>
+
+            <td>
+            <input
+            placeholder="انقر للكتابة"
+
             required
-            placeholder=""
+            
             value={hv_battery}
             className="hv_battery"
             type="text"
@@ -241,12 +322,18 @@ const HybridTest = () => {
               setHv_battery(e.target.value);
             }}
           />
-          <label className="">hv_battery</label>
-        </div>
-        <div>
-          <input
+            </td>
+            <th>H.V Battery</th>
+
+          </tr>
+          <tr>
+
+            <td>
+            <input
+            placeholder="انقر للكتابة"
+
             required
-            placeholder=""
+            
             value={eleectric_system}
             className="eleectric_system"
             type="text"
@@ -254,12 +341,18 @@ const HybridTest = () => {
               setEleectric_system(e.target.value);
             }}
           />
-          <label className="">eleectric_system</label>
-        </div>
-        <div>
-          <input
+            </td>
+            <th>Eleectric System</th>
+
+          </tr>
+          <tr>
+
+            <td>
+            <input
+            placeholder="انقر للكتابة"
+
             required
-            placeholder=""
+            
             value={emc}
             className="emc"
             type="text"
@@ -267,12 +360,18 @@ const HybridTest = () => {
               setEmc(e.target.value);
             }}
           />
-          <label className="">emc</label>
-        </div>
-        <div>
-          <input
+            </td>
+            <th>E.M.C</th>
+
+          </tr>
+          <tr>
+
+            <td>
+            <input
+            placeholder="انقر للكتابة"
+
             required
-            placeholder=""
+            
             value={soh}
             className="soh"
             type="text"
@@ -280,12 +379,25 @@ const HybridTest = () => {
               setSoh(e.target.value);
             }}
           />
-          <label className="">soh</label>
-        </div>
-        <div>
-          <input
+            </td>
+            <th>S.O.H</th>
+
+          </tr>
+          
+        
+        </tbody>
+      </Table>
+</div>
+     
+      <Table bordered hover id="tableRight">
+          <tbody>
+            <tr>
+              <th>ملاحظات على السيارة</th>
+              <td>
+              <input
+            placeholder="انقر للكتابة"
+
             required
-            placeholder=""
             value={note}
             className="note"
             type="text"
@@ -293,25 +405,33 @@ const HybridTest = () => {
               setNote(e.target.value);
             }}
           />
-          <label className="">note</label>
-        </div>
-        <div>
-          <input
+              </td>
+            </tr>
+            <tr>
+              <th>سعر الفحص</th>
+
+              <td>
+              <input
+
             required
-            placeholder=""
+            placeholder="انقر للكتابة"
             value={test_price}
             className="test_price"
-            type="text"
+            type="number"
             onChange={(e) => {
               setTest_price(e.target.value);
             }}
           />
-          <label className="">test_price</label>
-        </div>{" "}
-        <div>
-          <input
+              </td>
+            </tr>
+            <tr>
+              <th>ملاحظات شخصية</th>
+
+              <td>
+              <input
+            placeholder="انقر للكتابة"
+
             required
-            placeholder=""
             value={car_notes}
             className="car_notes"
             type="text"
@@ -319,12 +439,17 @@ const HybridTest = () => {
               setCar_notes(e.target.value);
             }}
           />
-          <label className="">Personal Notes</label>
-        </div>
-        <button type="submit" className="submit_Button_Register">
-          done
-        </button>
+              </td>
+            </tr>
+            <tr ><td colspan="2"><Button type="submit" className="submit_Button_Register">
+          إنشاء
+        </Button></td></tr>
+          </tbody>
+        </Table>
+        
+        
       </form>
+      
     </div>
   );
 };

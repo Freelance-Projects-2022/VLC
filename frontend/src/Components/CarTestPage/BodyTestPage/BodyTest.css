@@ -1,0 +1,19 @@
+.OrderTable{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 300px;
+}
+.bodyTestForm{
+    text-align: right;
+}
+textarea{
+    width: 100%;
+    height: 200px;
+    border: none;
+    resize: none;
+}
+input{
+    width: 100%;
+    border: none;
+}
