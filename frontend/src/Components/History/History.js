@@ -8,7 +8,7 @@ import HybridHistory from "./HybridHistory/HybridHistory";
 import BodyHistory from "./BodyHistory/BodyHistory";
 
 // CSS File
-import './History.css';
+import "./History.css";
 //====================================================//Create history Function
 const History = () => {
   const Route = useNavigate();
@@ -24,21 +24,14 @@ const History = () => {
 
   //======================================================//Return
   return (
-    <div id='projects'>
-      
-      
-		
+    <div id="projects">
       <ul className="Projects_List_Tabs">
-       
         <li
           className="List_Tabs_item"
           onClick={() => {
             setHybridTab(true);
             setBodyTab(false);
             setCarNoTab(false);
-
-           
-            
           }}
         >
           سجلات الهايبرد
@@ -49,8 +42,6 @@ const History = () => {
             setHybridTab(false);
             setBodyTab(true);
             setCarNoTab(false);
-
-           
           }}
         >
           سجلات البودي
@@ -61,20 +52,16 @@ const History = () => {
             setHybridTab(false);
             setBodyTab(false);
             setCarNoTab(true);
-
-           
           }}
         >
           رقم الفاتورة
         </li>
       </ul>
-      
 
       {bodyTab ? (
         <div className="Projects_Content_Tab">
           {" "}
           <BodyHistory />
-         
         </div>
       ) : (
         ""
@@ -95,7 +82,6 @@ const History = () => {
         ""
       )}
     </div>
-   
   );
 };
 
