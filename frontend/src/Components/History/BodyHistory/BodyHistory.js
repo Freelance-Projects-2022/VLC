@@ -14,7 +14,7 @@ const History = () => {
   const [allCarTest, setAllCarTest] = useState([]);
   const [modalShow, setModalShow] = useState(false);
 const [singleTest, setSingleTest] = useState({});
-  //====================================================//get car depend on order no
+  //====================================================//get All Body Test
 const getAllBodyTest=async()=>{
   const result = await axios.get('http://localhost:5000/cartest/getbodytests');
   if (result.data.success) {
@@ -23,6 +23,8 @@ const getAllBodyTest=async()=>{
     setAllCarTest(result.data.results);
   }
 }
+  //====================================================//get car depend on order no
+
   const getCarByOnOrderNo = async (e) => {
     e.preventDefault();
     try {
