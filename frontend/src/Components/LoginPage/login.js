@@ -1,8 +1,9 @@
-//====================================================//Require
+// //====================================================//Require
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Grid, Row, Col, Form } from "react-bootstrap";
 
 // CSS File
 import "./login.css";
@@ -53,7 +54,7 @@ const Login = () => {
     }
   };
 
-  //======================================================//Return
+  //   //======================================================//Return
   return (
     <div className="MainLoginDev">
       <form onSubmit={checkUser} className="loginForm">
@@ -72,46 +73,9 @@ const Login = () => {
           }}
         />
         <button type="submit" className="submitButton">
-          تسجيل الدخول{" "}
+          تسجيل الدخول
         </button>
       </form>
-
-      {/* <div className="loginPageImage">
-        <img src="https://s10.gifyu.com/images/Health-professional-team4e6b844e89762775.gif" />
-      </div>
-      <div className="loginDiv">
-        <form onSubmit={checkUser} className="loginForm">
-          <div className="loginInputDiv">
-            <input
-              type="number"
-              className="loginInput"
-              placeholder="Mobile Number"
-              required
-              onChange={(e) => {
-                setPhone(e.target.value);
-              }}
-            />
-            <div className="loginPageicon"></div>
-          </div>
-          <div>
-            <input
-              type="password"
-              className="loginInput"
-              placeholder="Password"
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-          </div>
-          <div className="loginButtonDiv">
-            <button className="loginButton"> Log in </button>
-          </div>
-          <div>
-            <p className="or">------------------ OR ------------------</p>
-          </div>
-          <div className="googleLogin"></div>
-        </form>
-      </div> */}
     </div>
   );
 };
