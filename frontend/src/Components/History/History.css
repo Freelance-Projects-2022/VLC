@@ -1,0 +1,110 @@
+#projects{
+    padding: 30px 0px 30px 150px;
+    margin-bottom: 100px;
+
+}
+.Projects_List_Tabs{
+    display:flex;
+    flex-direction:row;
+    list-style-type: none;
+    gap: 20px;
+    justify-content: center;
+}
+.Projects_Section_Title{
+    font-size: 32px;
+  color: #556d91;
+  margin-top: 10px;
+  margin-bottom: 30px;
+
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.List_Tabs_item{
+    color:#0d6efd;
+    font-size:20px;
+    font-weight:500;
+
+}
+.List_Tabs_item:active{
+    color:#ff517e;
+    
+}
+.Projects_Content_Tab{
+   display:flex;
+   flex-direction:row;
+   flex-wrap: wrap;
+   gap:50px;
+   justify-content: center;
+   align-items: center;
+   /* opacity:.5; */
+   /* transition: visibility 1s;
+   transition:opacity 0.5s linear; */
+}
+.Single_project{
+    min-width:350px;
+    min-height:250px;
+    max-width:350px;
+    max-height:250px;
+}
+.Up_single_project{
+    display:flex;
+    flex-direction:row;
+    gap: 10px;
+}
+.description_project{
+    background-color: rgba(0, 0, 0, 0.521);
+    color: white;
+    min-width:350px;
+    min-height:250px;
+    max-width:350px;
+    max-height:250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items:flex-start;
+}
+.description_project_title{
+    margin-left:20px;
+
+}
+.description_project_paragraph{
+    margin-left:20px;
+
+}
+.ReactTwo{
+    /* background-color:rgb(0, 0, 0); */
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/healthycare-5ffd5.appspot.com/o/Shefaa.jpg?alt=media&token=766cf76e-ffce-4290-a31c-0b622b86e3f9");
+    background-size: cover;
+
+}
+/* .ReactOne:hover{
+    transform: scale(1.2);
+    transform:0.5s;
+} */
+.ReactOne{
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/healthycare-5ffd5.appspot.com/o/NetFlix.jpg?alt=media&token=3106a47f-0af0-40f3-8698-e6442bb79140");
+    background-size: cover;
+}
+.PhpOne{
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/healthycare-5ffd5.appspot.com/o/reesha2.png?alt=media&token=84473d89-0daf-4d89-85dd-9e52d155c1f8");
+    background-size: cover;
+
+}
+.PhpTwo{
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/healthycare-5ffd5.appspot.com/o/firas.png?alt=media&token=97a1fbe3-739b-45cd-ad2a-2351466509f4");
+    background-size: cover;
+    background-position: bottom;
+
+}
+.CSharpOne{
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/healthycare-5ffd5.appspot.com/o/Sales.png?alt=media&token=742188a7-e0ec-40af-b5ed-f512ee57c21c");
+    background-size: cover;
+    background-position: Top;
+
+}
+.CSharpTwo{
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/healthycare-5ffd5.appspot.com/o/quizhub.jpg?alt=media&token=f21fdfb7-7cae-4c8f-9834-e0b5a2c1df38");
+    background-size: cover;
+    background-position: bottom;
+
+}

@@ -57,29 +57,7 @@ const History = () => {
   //======================================================//Return
   return (
     <div className="MainLoginDev">
-      <div>
-        <div
-          onClick={() => {
-            Route("/HybridHistory");
-          }}
-        >
-          سجلات الهايبرد
-        </div>
-        <div
-          onClick={() => {
-            Route("/BodyHistory");
-          }}
-        >
-          سجلات البودي
-        </div>{" "}
-        <div
-          onClick={() => {
-            Route("/BillNoHistory");
-          }}
-        >
-          رقم الفاتورة{" "}
-        </div>{" "}
-      </div>
+      
       <form className="getCarByOnOrderNo" onSubmit={getCarByOnOrderNo}>
         <div>
           <input
@@ -91,7 +69,7 @@ const History = () => {
               setCar_order_no(e.target.value);
             }}
           />
-          <label className="">رقم الفاتورة</label>
+          <label className=""> ممممرقم الفاتورة</label>
         </div>
         <div>
           <button type="submit" className="bill_no_btn">
