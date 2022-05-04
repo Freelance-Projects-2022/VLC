@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { Button, Form } from "react-bootstrap";
 
 // CSS File
-// import "./Register.css";
+import "./Register.css";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -63,70 +63,79 @@ const Register = () => {
   };
   return (
     <div className="registerMainDiv">
-        <Form onSubmit={RegisterUser} className="loginForm">
-        <Form.Select aria-label="Default select example" className="userRole" required onChange={(e) => {
-          
-          setRole_id(e.target.value);  
-          }}>
-  <option>اختر الصلاحية</option>
-  <option value="2">موظف</option>
-          <option value="1">مدير</option>
-</Form.Select>
-  <Form.Group className="mb-3" controlId="formBasicEmail">
-    <Form.Label>اسم المستخدم</Form.Label>
-    <Form.Control required
-          placeholder="أسم المستخدم"
-          className="userNameField"
-          type="text"
-          minLength={4}
-          value={username}
-          onChange={(e) => {
-            setUsername(e.target.value);
-          }} />
-    
-  </Form.Group>
+      <Form onSubmit={RegisterUser} className="loginForm">
+        <Form.Label>إختر الصلاحية</Form.Label>
 
-  <Form.Group className="mb-3" controlId="formBasicPassword">
-    <Form.Label>رقم الهاتف</Form.Label>
-    <Form.Control placeholder="رقم الهاتف"
+        <Form.Select
+          aria-label="Default select example"
+          className="userRole"
           required
-          className="phoneField"
-          type="text"
-          value={phone}
-          minLength={10}
           onChange={(e) => {
-            setPhone(e.target.value);
-          }}/>
-  </Form.Group>
-  <Form.Group className="mb-3" controlId="formBasicPassword">
-    <Form.Label>كلمة السر</Form.Label>
-    <Form.Control placeholder="كلمة السر"
-          required
-          className="passwordField"
-          type="password"
-          value={password}
-          minLength={6}
-          onChange={(e) => {
-            setPasssword(e.target.value);
-          }}/>
-  </Form.Group>
-  <Form.Group className="mb-3" controlId="formBasicPassword">
-    <Form.Label>إعادة كلمة السر</Form.Label>
-    <Form.Control  placeholder="إعادة كلمة السر"
-          required
-          value={rePassword}
-          minLength={6}
-          className="rePasswordField"
-          type="password"
-          onChange={(e) => {
-            setRePassword(e.target.value);
-          }}/>
-  </Form.Group>
-  <Button variant="primary" type="submit">
-  تسجيل
-  </Button>
-</Form>
-      
+            setRole_id(e.target.value);
+          }}
+        >
+          <option value="" selected hidden></option>
+
+          <option value="2">موظف</option>
+          <option value="1">مدير</option>
+        </Form.Select>
+        <br />
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>إسم المستخدم</Form.Label>
+          <Form.Control
+            required
+            className="userNameField"
+            type="text"
+            minLength={4}
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>رقم الهاتف</Form.Label>
+          <Form.Control
+            required
+            className="phoneField"
+            type="text"
+            value={phone}
+            minLength={10}
+            onChange={(e) => {
+              setPhone(e.target.value);
+            }}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>كلمة السر</Form.Label>
+          <Form.Control
+            required
+            className="passwordField"
+            type="password"
+            value={password}
+            minLength={6}
+            onChange={(e) => {
+              setPasssword(e.target.value);
+            }}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>إعادة كلمة السر</Form.Label>
+          <Form.Control
+            required
+            value={rePassword}
+            minLength={6}
+            className="rePasswordField"
+            type="password"
+            onChange={(e) => {
+              setRePassword(e.target.value);
+            }}
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          تسجيل
+        </Button>
+      </Form>
     </div>
   );
 };

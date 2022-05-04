@@ -11,12 +11,30 @@ import Accounting from "./Components/Accounting/Accounting";
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
+  const [isLogout, setIslogout] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   return (
     <div className="App">
-      <Navigation isLogin={isLogin} />
+      <Navigation
+        isLogin={isLogin}
+        setIsLogin={setIsLogin}
+        isLogout={isLogout}
+        setIslogout={setIslogout}
+        isAdmin={isAdmin}
+        setIsAdmin={setIsAdmin}
+      />
       <Routes>
-        <Route path="/Login" element={<LoginPage setIsLogin={setIsLogin} />} />
+        <Route
+          path="/Login"
+          element={
+            <LoginPage
+              setIsLogin={setIsLogin}
+              setIslogout={setIslogout}
+              setIsAdmin={setIsAdmin}
+            />
+          }
+        />
         <Route path="/Register" element={<RegisterPage />} />
         <Route path="/BodyTest" element={<BodyCarTest />} />
         <Route path="/HybridTest" element={<HybridCarTest />} />
