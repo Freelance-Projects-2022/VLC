@@ -7,31 +7,19 @@ import Swal from "sweetalert2";
 // CSS File
 
 //====================================================//Create history Function
-const History = () => {
-  const [car_order_no, setCar_order_no] = useState("");
-  const [allCarTest, setAllCarTest] = useState("");
-
+const HybridHistory = () => {
   //====================================================//get car depend on order no
 
-  const getCarByOnOrderNo = async (e) => {
-    e.preventDefault();
+  const HybridHistory = async () => {
     try {
-      const res = await axios.post(
-        "http://localhost:5000/cartest/getCarByOrderNo",
-        {
-          car_order_no: car_order_no,
-        }
+      const res = await axios.get(
+        "http://localhost:5000/cartest/gethybridtest"
       );
       if (res.data.success) {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: res.data.message,
-          showConfirmButton: false,
-          timer: 2000,
-        });
-        console.log(res.data.result);
-        setAllCarTest(res.data.result);
+        console.log(
+          "🚀 ~ file: HybridHistory.js ~ line 19 ~ HybridHistory ~ res.data",
+          res.data
+        );
       } else throw Error;
     } catch (error) {
       if (error.response && error.response.data) {
@@ -53,30 +41,12 @@ const History = () => {
       });
     }
   };
+
+  useEffect(() => {
+    HybridHistory();
+  }, []);
   //======================================================//Return
-  return (
-    <div className="MainLoginDev">
-      <form className="getCarByOnOrderNo" onSubmit={getCarByOnOrderNo}>
-        <div>
-          <input
-            required
-            className="car_order_no"
-            type="text"
-            value={car_order_no}
-            onChange={(e) => {
-              setCar_order_no(e.target.value);
-            }}
-          />
-          <label className=""> في الهايبرد رقم الفاتورة</label>
-        </div>
-        <div>
-          <button type="submit" className="bill_no_btn">
-            أبحث
-          </button>
-        </div>
-      </form>
-    </div>
-  );
+  return <div className="MainHybridHistory"></div>;
 };
 
-export default History;
+export default HybridHistory;

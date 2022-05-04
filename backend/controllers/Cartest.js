@@ -372,7 +372,7 @@ const gethybridCars = (req, res) => {
     if (err) {
       return res.status(500).json({
         success: false,
-        massage: "server error",
+        message: "server error",
         err: err,
       });
     }
@@ -380,7 +380,7 @@ const gethybridCars = (req, res) => {
     // result are the data returned by mysql server
     return res.status(200).json({
       success: true,
-      massage: "All hybrid Cars",
+      message: "تمت العملية بنجاح",
       results: result,
     });
   });

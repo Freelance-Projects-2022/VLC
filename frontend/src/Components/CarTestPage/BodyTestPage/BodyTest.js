@@ -119,298 +119,293 @@ const BodyTest = () => {
   //======================================================//Return
   return (
     <div className="bodyTestMainDiv">
-    
       <form className="bodyTestForm" onSubmit={carBodyTest}>
-      <div><span>التاريخ : </span>{dateNow}
-      
-      </div>
-      
-      <div className="OrderTable">
-        
+        <div>
+          <span>التاريخ : </span>
+          {dateNow}
+        </div>
+
+        <div className="OrderTable">
+          <Table bordered hover>
+            <tbody>
+              <tr>
+                <th>رقم الشاصي</th>
+                <td>
+                  <input
+                    required
+                    className="car_vin"
+                    placeholder="انقر للكتابة"
+                    type="text"
+                    value={car_vin}
+                    onChange={(e) => {
+                      setCar_vin(e.target.value);
+                    }}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>رقم السيارة</th>
+
+                <td>
+                  <input
+                    required
+                    className="car_no"
+                    placeholder="انقر للكتابة"
+                    type="text"
+                    value={car_no}
+                    onChange={(e) => {
+                      setCar_no(e.target.value);
+                    }}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>لون السيارة</th>
+
+                <td>
+                  <input
+                    required
+                    className="car_color"
+                    placeholder="انقر للكتابة"
+                    type="text"
+                    value={car_color}
+                    onChange={(e) => {
+                      setCar_color(e.target.value);
+                    }}
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </Table>
+          <Table striped bordered hover>
+            <tbody>
+              <tr>
+                <th>نوع السيارة</th>
+                <td>
+                  <input
+                    required
+                    className="car_brand"
+                    placeholder="انقر للكتابة"
+                    type="text"
+                    value={car_brand}
+                    onChange={(e) => {
+                      setCar_brand(e.target.value);
+                    }}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>موديل السيارة</th>
+
+                <td>
+                  <input
+                    required
+                    className="setCar_model"
+                    placeholder="انقر للكتابة"
+                    type="text"
+                    value={car_model}
+                    onChange={(e) => {
+                      setCar_model(e.target.value);
+                    }}
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </Table>
+        </div>
+        <h5 style={{ backgroundColor: "blue", color: "whitesmoke" }}>
+          تقرير فحص السيارة
+        </h5>
         <Table bordered hover>
           <tbody>
             <tr>
-              <th>رقم الشاصي</th>
+              <th>فحص الشاصي الامامي اليمين</th>
               <td>
+                {" "}
                 <input
                   required
-                  className="car_vin"
-            placeholder="انقر للكتابة"
-
+                  className="vin_tr"
                   type="text"
-                  value={car_vin}
+                  value={vin_tr}
                   onChange={(e) => {
-                    setCar_vin(e.target.value);
+                    setVin_tr(e.target.value);
                   }}
                 />
               </td>
             </tr>
             <tr>
-              <th>رقم السيارة</th>
+              <th>فحص الشاصي الامامي الشمال</th>
 
               <td>
                 <input
                   required
-                  className="car_no"
-            placeholder="انقر للكتابة"
-
+                  value={vin_tl}
+                  placeholder="انقر للكتابة"
+                  className="vin_tl"
                   type="text"
-                  value={car_no}
                   onChange={(e) => {
-                    setCar_no(e.target.value);
+                    setVin_tl(e.target.value);
                   }}
                 />
               </td>
             </tr>
             <tr>
-              <th>لون السيارة</th>
+              <th>فحص الشاصي الخلفي اليمين</th>
 
               <td>
                 <input
                   required
-                  className="car_color"
-            placeholder="انقر للكتابة"
-
+                  value={vin_br}
+                  placeholder="انقر للكتابة"
+                  className="vin_br"
                   type="text"
-                  value={car_color}
                   onChange={(e) => {
-                    setCar_color(e.target.value);
+                    setVin_br(e.target.value);
+                  }}
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>فحص الشاصي الخلفي الشمال</th>
+
+              <td>
+                <input
+                  required
+                  value={vin_bl}
+                  placeholder="انقر للكتابة"
+                  className="vin_bl"
+                  type="text"
+                  onChange={(e) => {
+                    setVin_bl(e.target.value);
+                  }}
+                />
+              </td>
+            </tr>
+            <tr>
+              <th colSpan="2">ملاحظات البودي</th>
+            </tr>
+            <tr>
+              <td colSpan="2">
+                <textarea
+                  required
+                  value={body_note}
+                  placeholder="انقر للكتابة"
+                  className="body_note"
+                  type="text"
+                  onChange={(e) => {
+                    setBody_note(e.target.value);
+                  }}
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>فحص المحرك</th>
+
+              <td>
+                <input
+                  required
+                  placeholder="انقر للكتابة"
+                  value={engine_test}
+                  className="engine_test"
+                  type="text"
+                  onChange={(e) => {
+                    setEngine_test(e.target.value);
+                  }}
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>فحص الجير</th>
+
+              <td>
+                <input
+                  required
+                  placeholder="انقر للكتابة"
+                  value={gear_test}
+                  className="gear_test"
+                  type="text"
+                  onChange={(e) => {
+                    setGear_test(e.target.value);
+                  }}
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>فحص بككس /أكسات</th>
+
+              <td>
+                <input
+                  required
+                  placeholder="انقر للكتابة"
+                  value={back_acss}
+                  className="back_acss"
+                  type="text"
+                  onChange={(e) => {
+                    setBack_acss(e.target.value);
                   }}
                 />
               </td>
             </tr>
           </tbody>
         </Table>
-        <Table striped bordered hover>
-          <tbody>
-            <tr>
-              <th>نوع السيارة</th>
-              <td>
-                <input
-                  required
-                  className="car_brand"
-            placeholder="انقر للكتابة"
-
-                  type="text"
-                  value={car_brand}
-                  onChange={(e) => {
-                    setCar_brand(e.target.value);
-                  }}
-                />
-              </td>
-            </tr>
-            <tr>
-              <th>موديل السيارة</th>
-
-              <td>
-                <input
-                  required
-                  className="setCar_model"
-            placeholder="انقر للكتابة"
-
-                  type="text"
-                  value={car_model}
-                  onChange={(e) => {
-                    setCar_model(e.target.value);
-                  }}
-                />
-              </td>
-            </tr>
-          </tbody>
-        </Table>
-      </div>
-      <h5 style={{ backgroundColor: "blue", color: "whitesmoke" }}>
-        تقرير فحص السيارة
-      </h5>
-      <Table bordered hover>
-        <tbody>
-          <tr>
-            <th>فحص الشاصي الامامي اليمين</th>
-            <td>
-              {" "}
-              <input
-                required
-                className="vin_tr"
-                type="text"
-                value={vin_tr}
-                onChange={(e) => {
-                  setVin_tr(e.target.value);
-                }}
-              />
-            </td>
-          </tr>
-          <tr>
-            <th>فحص الشاصي الامامي الشمال</th>
-
-            <td>
-              <input
-                required
-                value={vin_tl}
-                placeholder="انقر للكتابة"
-                className="vin_tl"
-                type="text"
-                onChange={(e) => {
-                  setVin_tl(e.target.value);
-                }}
-              />
-            </td>
-          </tr>
-          <tr>
-            <th>فحص الشاصي الخلفي اليمين</th>
-
-            <td>
-              <input
-                required
-                value={vin_br}
-                placeholder="انقر للكتابة"
-                className="vin_br"
-                type="text"
-                onChange={(e) => {
-                  setVin_br(e.target.value);
-                }}
-              />
-            </td>
-          </tr>
-          <tr>
-            <th>فحص الشاصي الخلفي الشمال</th>
-
-            <td>
-              <input
-                required
-                value={vin_bl}
-                placeholder="انقر للكتابة"
-                className="vin_bl"
-                type="text"
-                onChange={(e) => {
-                  setVin_bl(e.target.value);
-                }}
-              />
-            </td>
-          </tr>
-          <tr>
-            <th colspan="2">ملاحظات البودي</th>
-            
-          </tr>
-        <tr>
-          <td colspan="2">
-          <textarea
-            required
-            value={body_note}
-            placeholder="انقر للكتابة"
-            className="body_note"
-            type="text"
-            onChange={(e) => {
-              setBody_note(e.target.value);
-            }}
-          />
-          </td>
-        </tr>
-        <tr>
-            <th>فحص المحرك</th>
-
-            <td>
-            <input
-            required
-            placeholder="انقر للكتابة"
-            value={engine_test}
-            className="engine_test"
-            type="text"
-            onChange={(e) => {
-              setEngine_test(e.target.value);
-            }}
-          />
-            </td>
-          </tr>
-          <tr>
-            <th>فحص الجير</th>
-
-            <td>
-            <input
-            required
-            placeholder="انقر للكتابة"
-            value={gear_test}
-            className="gear_test"
-            type="text"
-            onChange={(e) => {
-              setGear_test(e.target.value);
-            }}
-          />
-            </td>
-          </tr>
-          <tr>
-            <th>فحص بككس /أكسات</th>
-
-            <td>
-            <input
-            required
-            placeholder="انقر للكتابة"
-            value={back_acss}
-            className="back_acss"
-            type="text"
-            onChange={(e) => {
-              setBack_acss(e.target.value);
-            }}
-          />
-            </td>
-          </tr>
-        </tbody>
-      </Table>
-      <Table bordered hover>
+        <Table bordered hover>
           <tbody>
             <tr>
               <th>ملاحظات على السيارة</th>
               <td>
-              <input
-            required
-            placeholder="انقر للكتابة"
-            value={note}
-            className="note"
-            type="text"
-            onChange={(e) => {
-              setNote(e.target.value);
-            }}
-          />
+                <input
+                  required
+                  placeholder="انقر للكتابة"
+                  value={note}
+                  className="note"
+                  type="text"
+                  onChange={(e) => {
+                    setNote(e.target.value);
+                  }}
+                />
               </td>
             </tr>
             <tr>
               <th>سعر الفحص</th>
 
               <td>
-              <input
-            required
-            placeholder="انقر للكتابة"
-            value={test_price}
-            className="test_price"
-            type="number"
-            onChange={(e) => {
-              setTest_price(e.target.value);
-            }}
-          />
+                <input
+                  required
+                  placeholder="انقر للكتابة"
+                  value={test_price}
+                  className="test_price"
+                  type="number"
+                  onChange={(e) => {
+                    setTest_price(e.target.value);
+                  }}
+                />
               </td>
             </tr>
             <tr>
               <th>ملاحظات شخصية</th>
 
               <td>
-              <input
-            required
-            placeholder="انقر للكتابة"
-            value={car_notes}
-            className="car_notes"
-            type="text"
-            onChange={(e) => {
-              setCar_notes(e.target.value);
-            }}
-          />
+                <input
+                  required
+                  placeholder="انقر للكتابة"
+                  value={car_notes}
+                  className="car_notes"
+                  type="text"
+                  onChange={(e) => {
+                    setCar_notes(e.target.value);
+                  }}
+                />
               </td>
             </tr>
-            <tr ><td colspan="2"><Button type="submit" className="submit_Button_Register">
-          إنشاء
-        </Button></td></tr>
+            <tr>
+              <td colSpan="2">
+                <Button type="submit" className="submit_Button_Register">
+                  إنشاء
+                </Button>
+              </td>
+            </tr>
           </tbody>
         </Table>
-        
-        
       </form>
     </div>
   );
