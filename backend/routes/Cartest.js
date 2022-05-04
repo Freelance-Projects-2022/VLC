@@ -15,6 +15,7 @@ const {
   getAllTest,
   getCarByCarNo,
   getCarByCarVin,
+  getTestByDate,
 } = require("../controllers/Cartest");
 
 //====================================================//Create car Test Router
@@ -33,6 +34,7 @@ CarTestRouter.put("/updatehybridtestbyid", updateHybridTestById);
 CarTestRouter.put("/updatebodytestbyid", updatebodyTestById);
 CarTestRouter.post("/getCarByOrderNo", getCarByOrderNo);
 CarTestRouter.get("/getAllTest", getAllTest);
+CarTestRouter.get("/getAllTestByDate", getTestByDate);
 
 //====================================================// module.exports
 

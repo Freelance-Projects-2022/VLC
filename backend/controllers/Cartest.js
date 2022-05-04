@@ -385,6 +385,53 @@ const gethybridCars = (req, res) => {
     });
   });
 };
+//====================================================//get all  Cars  depend on date
+
+const getTestByDate = (req, res) => {
+  const { dateOne, dateTwo } = req.body;
+  const query =
+    "SELECT *  FROM `body_test`  WHERE test_date BETWEEN (?)AND(?) and is_deleted=0";
+  const data = [dateOne, dateTwo];
+  connection.query(query, data, (err, hybridResult) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        massage: "server error",
+        err: err,
+      });
+    }
+
+    const query =
+      "SELECT *  FROM `hybrid_test`  WHERE test_date BETWEEN (?)AND(?) and is_deleted=0";
+    const data = [dateOne, dateTwo];
+
+    connection.query(query, data, (err, BodyResult) => {
+      if (err) {
+        return res.status(500).json({
+          success: false,
+          massage: "server error",
+          err: err,
+        });
+      }
+      let result = hybridResult.concat(BodyResult);
+      if (result.length === 0) {
+        return res.status(500).json({
+          success: false,
+          massage: "لا يوجد أي نتائج",
+          err: err,
+        });
+      } else {
+        // result are the data returned by mysql server
+        return res.status(200).json({
+          success: true,
+          massage: "جميع أفحصة البودي",
+          results: result,
+        });
+      }
+    });
+  });
+};
+
 //====================================================//delete Body Test
 const deleteBodyTest = (req, res) => {
   const id = req.query.id;
@@ -586,4 +633,5 @@ module.exports = {
   getAllTest,
   getCarByCarNo,
   getCarByCarVin,
+  getTestByDate,
 };
