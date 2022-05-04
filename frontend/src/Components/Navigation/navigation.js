@@ -14,16 +14,20 @@ import axios from "axios";
 import "./navigation.css";
 
 //====================================================// Navigation function
-const Navigation = () => {
+const Navigation = ({ isLogin }) => {
   const history = useNavigate();
 
   //====================================================// return
 
   return (
     <div className="navigationMainDiv">
-      <Link to="/login" alt="test">
-        تسجيل الدخول
-      </Link>
+      {isLogin ? (
+        <></>
+      ) : (
+        <Link to="/login" alt="test">
+          تسجيل الدخول
+        </Link>
+      )}
 
       <div>
         <Link to="/register" alt="test">

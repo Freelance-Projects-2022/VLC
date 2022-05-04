@@ -10,11 +10,13 @@ import History from "./Components/History/History";
 import Accounting from "./Components/Accounting/Accounting";
 
 function App() {
+  const [isLogin, setIsLogin] = useState(false);
+
   return (
     <div className="App">
-      <Navigation />
+      <Navigation isLogin={isLogin} />
       <Routes>
-        <Route path="/Login" element={<LoginPage />} />
+        <Route path="/Login" element={<LoginPage setIsLogin={setIsLogin} />} />
         <Route path="/Register" element={<RegisterPage />} />
         <Route path="/BodyTest" element={<BodyCarTest />} />
         <Route path="/HybridTest" element={<HybridCarTest />} />
