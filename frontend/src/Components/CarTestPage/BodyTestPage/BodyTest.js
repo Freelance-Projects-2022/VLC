@@ -24,7 +24,7 @@ const BodyTest = () => {
   const [engine_test, setEngine_test] = useState("");
   const [gear_test, setGear_test] = useState("");
   const [back_acss, setBack_acss] = useState("");
-  const [note, setNote] = useState("");
+  
   const [test_price, setTest_price] = useState("");
   const [car_notes, setCar_notes] = useState("");
   const [dateNow, setDateNow] = useState("");
@@ -49,7 +49,7 @@ const BodyTest = () => {
         engine_test: engine_test,
         gear_test: gear_test,
         back_acss: back_acss,
-        note: note,
+        
         test_price: test_price,
         car_notes: car_notes,
         test_date: test_date,
@@ -74,7 +74,7 @@ const BodyTest = () => {
         setCar_model("");
         setCar_no("");
         setCar_brand("");
-        setNote("");
+        
         setTest_price("");
         setCar_notes("");
       } else throw Error;
@@ -350,21 +350,7 @@ const BodyTest = () => {
         </Table>
         <Table bordered hover>
           <tbody>
-            <tr>
-              <th>ملاحظات على السيارة</th>
-              <td>
-                <input
-                  required
-                  placeholder="انقر للكتابة"
-                  value={note}
-                  className="note"
-                  type="text"
-                  onChange={(e) => {
-                    setNote(e.target.value);
-                  }}
-                />
-              </td>
-            </tr>
+            
             <tr>
               <th>سعر الفحص</th>
 

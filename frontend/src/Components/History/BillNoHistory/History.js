@@ -3,6 +3,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Table } from "react-bootstrap";
+import {MdOutlineElectricCar} from "react-icons/md";
+import BodyModal from "../BodyModal/BodyModal.js";
+import HybridModal from '../HybridModal/HybridModal.js';
 
 // CSS File
 
@@ -11,7 +15,26 @@ const History = () => {
   const Route = useNavigate();
   const [car_order_no, setCar_order_no] = useState("");
   const [allCarTest, setAllCarTest] = useState("");
-
+  const [modalShow, setModalShow] = useState(false);
+  const [singleTest, setSingleTest] = useState({});
+   //====================================================//get All Body Test
+const getAllBodyTest=async()=>{
+  const result = await axios.get('http://localhost:5000/cartest/getbodytests');
+  if (result.data.success) {
+    
+    console.log(result.data.results);
+    setAllCarTest(result.data.results);
+  }
+}
+//====================================================//get All Hybrid Test
+const getAllHybridTest=async()=>{
+  const result = await axios.get('http://localhost:5000/cartest/gethybridtest');
+  if (result.data.success) {
+    
+    console.log(result.data.results);
+    setAllCarTest([...result.data.results]);
+  }
+}
   //====================================================//get car depend on order no
 
   const getCarByOnOrderNo = async (e) => {
@@ -53,6 +76,13 @@ const History = () => {
       });
     }
   };
+   //====================================================//get All Body Test
+   useEffect(()=>{
+    getAllBodyTest();
+    getAllHybridTest();
+  },[])
+  console.log('line84',allCarTest);
+
   //======================================================//Return
   return (
     <div className="MainLoginDev">
